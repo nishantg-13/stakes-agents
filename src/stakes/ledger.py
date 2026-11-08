@@ -36,14 +36,32 @@ class EpisodeLedger:
         return [asdict(e) for e in self.entries]
 
 
+def _covers(gold, call) -> bool:
+    """Does the agent's value contain everything the reference value specifies?
+
+    Dicts: every reference key must be present and match; extra keys in the call are allowed
+    (e.g. the agent adds 'origin'/'price' to a flight that the reference gives as
+    {flight_number, date}, and the tool ignores the extras). Lists: same length, matched in
+    order. Scalars: equal, with 2 == 2.0.
+    """
+    if isinstance(gold, dict):
+        return isinstance(call, dict) and all(k in call and _covers(v, call[k]) for k, v in gold.items())
+    if isinstance(gold, list):
+        return (
+            isinstance(call, list)
+            and len(gold) == len(call)
+            and all(_covers(g, c) for g, c in zip(gold, call, strict=True))
+        )
+    if isinstance(gold, (int, float)) and isinstance(call, (int, float)) and not isinstance(gold, bool):
+        return float(gold) == float(call)
+    return gold == call
+
+
 def _args_match(gold: dict, call_args: dict) -> bool:
-    compare = gold.get("compare_args")
-    keys = list(call_args.keys()) if compare is None else list(compare)
-    if not keys:
-        return True
-    return {k: call_args.get(k) for k in keys if k in call_args} == {
-        k: gold["arguments"].get(k) for k in keys if k in gold["arguments"]
-    }
+    """Match a call against a reference action on the reference's arguments (or compare_args)."""
+    keys = gold.get("compare_args")
+    ref = gold["arguments"] if keys is None else {k: gold["arguments"].get(k) for k in keys}
+    return _covers(ref, call_args)
 
 
 def build_ledger(

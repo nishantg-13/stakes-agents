@@ -104,3 +104,21 @@ def test_compare_args_subset():
              "compare_args": ["id"], "requestor": "assistant"}]
     led = build_ledger([_call(0, "rename", {"id": "A", "note": "different"})], gold, REG)
     assert not led.entries[0].erroneous
+
+
+def test_nested_extra_fields_still_match():
+    # reference gives flights as {flight_number, date}; the agent adds informational fields
+    gold = [{"action_id": "g", "name": "book", "requestor": "assistant", "compare_args": None,
+             "arguments": {"id": "A", "flights": [{"n": "HAT1", "d": "2024-05-01"}]}}]
+    call = {"id": "A", "flights": [{"n": "HAT1", "d": "2024-05-01", "price": 100, "origin": "LAS"}]}
+    assert not build_ledger([_call(0, "book", call)], gold, REG).entries[0].erroneous
+
+
+def test_nested_value_difference_is_wrong():
+    gold = [{"action_id": "g", "name": "book", "requestor": "assistant", "compare_args": None,
+             "arguments": {"id": "A", "flights": [{"n": "HAT1", "d": "2024-05-01"}]}}]
+    wrong_flight = {"id": "A", "flights": [{"n": "HAT9", "d": "2024-05-01"}]}
+    missing_leg = {"id": "A", "flights": []}
+    missing_key = {"flights": [{"n": "HAT1", "d": "2024-05-01"}]}
+    for call in (wrong_flight, missing_leg, missing_key):
+        assert build_ledger([_call(0, "book", call)], gold, REG).entries[0].erroneous

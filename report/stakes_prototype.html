@@ -168,10 +168,10 @@ flowchart LR
           <tr><th>Method</th><th>Success rate</th><th>pass^2 (succeeds both trials)</th><th>Wrong irreversible writes / episode</th><th>Cost / episode</th><th>Tokens / episode</th></tr>
         </thead>
         <tbody>
-          <tr><td>Baseline (single run)</td><td class="num">0.50 <span class="ci">[0.27, 0.73]</span></td><td class="num">0.40 <span class="ci">[0.13, 0.67]</span></td><td class="num">0.40</td><td class="num">$0.011</td><td class="num">73.6k</td></tr>
-          <tr><td>Uncertainty-only</td><td class="num">0.57 <span class="ci">[0.37, 0.77]</span></td><td class="num">0.40 <span class="ci">[0.13, 0.67]</span></td><td class="num">0.30</td><td class="num">$0.028</td><td class="num">140.5k</td></tr>
-          <tr><td>Verify every write</td><td class="num">0.60 <span class="ci">[0.40, 0.80]</span></td><td class="num">0.47 <span class="ci">[0.20, 0.73]</span></td><td class="num">0.33</td><td class="num">$0.018</td><td class="num">74.7k</td></tr>
-          <tr class="ours"><td><strong>STAKES v0</strong></td><td class="num">0.60 <span class="ci">[0.33, 0.87]</span></td><td class="num">0.60 <span class="ci">[0.33, 0.87]</span></td><td class="num">0.33</td><td class="num">$0.022</td><td class="num">104.1k</td></tr>
+          <tr><td>Baseline (single run)</td><td class="num">0.50 <span class="ci">[0.27, 0.73]</span></td><td class="num">0.40 <span class="ci">[0.13, 0.67]</span></td><td class="num">0.27</td><td class="num">$0.011</td><td class="num">73.6k</td></tr>
+          <tr><td>Uncertainty-only</td><td class="num">0.57 <span class="ci">[0.37, 0.77]</span></td><td class="num">0.40 <span class="ci">[0.13, 0.67]</span></td><td class="num">0.13</td><td class="num">$0.028</td><td class="num">140.5k</td></tr>
+          <tr><td>Verify every write</td><td class="num">0.60 <span class="ci">[0.40, 0.80]</span></td><td class="num">0.47 <span class="ci">[0.20, 0.73]</span></td><td class="num">0.13</td><td class="num">$0.018</td><td class="num">74.7k</td></tr>
+          <tr class="ours"><td><strong>STAKES v0</strong></td><td class="num">0.60 <span class="ci">[0.33, 0.87]</span></td><td class="num">0.60 <span class="ci">[0.33, 0.87]</span></td><td class="num">0.13</td><td class="num">$0.022</td><td class="num">104.1k</td></tr>
         </tbody>
       </table>
     </div>
@@ -182,7 +182,8 @@ flowchart LR
       <li><strong>Uncertainty-only spent the most and gained the least in consistency.</strong> At 2.5× the baseline's tokens its pass^2 did not move, which matches the motivating hypothesis: much of its budget goes to reads (78% of the agent's tool calls are reads).</li>
       <li><strong>The simple "verify every write" rule is a strong competitor.</strong> It matches STAKES on single-run success at lower cost. Separating the two is the central question for the full study, using a cost-matched budget sweep.</li>
       <li><strong>The core premise holds so far.</strong> In the baseline runs, 33% of failures came from a confident wrong write (all re-samples agreed), just above the pre-registered 30% bar for continuing. That is 5 of 15 failures, so it is a first signal only.</li>
-      <li><strong>A measurement issue to fix.</strong> 14% of writes in successful episodes were flagged as wrong, meaning valid alternative paths are sometimes counted as errors. That is above our 10% tolerance, so the reference matching needs refining before the full pilot.</li>
+      <li><strong>Every form of deliberation halved wrong irreversible writes</strong> (0.27 to 0.13 per episode). The verifier is mostly accurate: of 34 high-stakes actions it sent back for revision across the three methods, 27 were genuinely wrong and 7 were correct actions it blocked by mistake.</li>
+      <li><strong>Measurement check.</strong> An early version of the wrong-write detector flagged 14% of writes in successful episodes, because the agent adds harmless extra fields to its calls. After the fix the rate is 0%, and all numbers above use the corrected detector.</li>
     </ul>
   </section>
 
