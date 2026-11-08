@@ -1,0 +1,36 @@
+# Effect registry: tau2 retail domain (tau2-bench @ 033bf082)
+# Policy-compliant, agent-relative reversibility; see docs/decisions.md A-002.
+domain: retail
+tools:
+  cancel_pending_order:
+    type: IRREVERSIBLE
+    why: No tool un-cancels an order; the refund is issued immediately or within 5-7 days.
+  exchange_delivered_order_items:
+    type: IRREVERSIBLE
+    why: The policy allows an exchange only once per order, and the status becomes "exchange requested".
+  modify_pending_order_items:
+    type: IRREVERSIBLE
+    why: >-
+      Callable only once; status becomes "pending (items modified)", after which the order can
+      no longer be modified or cancelled (policy).
+  return_delivered_order_items:
+    type: IRREVERSIBLE
+    why: Status becomes "return requested"; no tool withdraws a return request.
+  modify_pending_order_address:
+    type: REVERSIBLE
+    why: The order stays pending, so the address can be modified again.
+  modify_pending_order_payment:
+    type: COMPENSABLE
+    why: >-
+      Can be switched back while pending, but refunds to non-gift-card methods take 5-7 days,
+      a residual cost to the user.
+  modify_user_address:
+    type: REVERSIBLE
+    why: The default address can be set back with the same tool.
+  transfer_to_human_agents:
+    type: IRREVERSIBLE
+    canon_ignore: [summary]  # free text; differs on every sample
+    why: Terminal action; it ends autonomous handling of the conversation.
+  calculate:
+    type: READ
+    why: Pure computation, no state change.

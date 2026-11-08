@@ -1,0 +1,214 @@
+<title>STAKES Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (research brief), with full-width figure blocks for the diagram and the results table. */
+:root {
+  --paper: #f7f8fa;
+  --ink: #17202e;
+  --muted: #5a6474;
+  --rule: #d9dde4;
+  --panel: #ffffff;
+  --irrev: #b4521f;      /* irreversible / high stakes */
+  --irrev-soft: #f6e6dc;
+  --rev: #1f6f6b;        /* reversible / read: low stakes */
+  --rev-soft: #dcefed;
+  --accent: #2b4c8c;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161d; --ink: #e6e9ee; --muted: #9aa4b2; --rule: #2a313c; --panel: #181e27;
+    --irrev: #e58a5a; --irrev-soft: #3a2519; --rev: #5fbdb6; --rev-soft: #16302e; --accent: #8fb0ee;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161d; --ink: #e6e9ee; --muted: #9aa4b2; --rule: #2a313c; --panel: #181e27;
+  --irrev: #e58a5a; --irrev-soft: #3a2519; --rev: #5fbdb6; --rev-soft: #16302e; --accent: #8fb0ee;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+main { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 5vw, 44px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 0 0 12px; text-wrap: balance; }
+h3 { font-size: 15px; font-weight: 600; margin: 0 0 6px; }
+p { margin: 0 0 12px; max-width: 65ch; }
+.lede { font-size: 18px; color: var(--muted); max-width: 62ch; }
+.status { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+.pill { font-family: var(--mono); font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); }
+.pill.live { border-color: var(--rev); color: var(--rev); }
+section { display: flex; flex-direction: column; gap: 4px; }
+.formula {
+  font-family: var(--mono); font-size: 15px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 16px 18px; overflow-x: auto; margin: 6px 0 12px; white-space: nowrap;
+}
+.formula b { color: var(--irrev); font-weight: 500; }
+.ladder { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 8px; }
+.step { border-top: 3px solid var(--rule); padding-top: 8px; min-width: 0; }
+.step .t { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.step.read { border-color: var(--rev); }
+.step.irr { border-color: var(--irrev); }
+.types { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 8px 0 4px; }
+.type { padding: 10px 12px; border-radius: 6px; font-size: 14px; min-width: 0; }
+.type code { font-family: var(--mono); font-size: 12px; display: block; color: var(--muted); margin-top: 2px; overflow-wrap: anywhere; }
+.type.r { background: var(--rev-soft); } .type.i { background: var(--irrev-soft); }
+.type strong { display: block; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+.figure { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; overflow-x: auto; }
+pre.mermaid { margin: 0; background: transparent; text-align: center; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .03em; }
+td.num { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+tr.ours td { background: var(--rev-soft); }
+.ci { color: var(--muted); font-size: 12px; }
+.note { font-size: 14px; color: var(--muted); border-left: 3px solid var(--rule); padding-left: 12px; max-width: 65ch; }
+.trace { font-family: var(--mono); font-size: 13px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; overflow-x: auto; line-height: 1.7; }
+.trace .bad { color: var(--irrev); font-weight: 500; }
+.trace .dim { color: var(--muted); }
+ul.built { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 65ch; }
+ul.built code, p code { font-family: var(--mono); font-size: 13px; }
+ol.bullets { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; max-width: 65ch; }
+.next { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.next div { border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; background: var(--panel); min-width: 0; }
+.next .when { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">Research prototype · LLM agents · November 2026</div>
+    <h1>STAKES: spend agent compute where mistakes can't be undone</h1>
+    <p class="lede">Stakes-weighted test-time deliberation for tool-using LLM agents. Extra reasoning goes to actions whose errors are costly and irreversible, not merely to actions the model is unsure about.</p>
+    <div class="status"><span class="pill live">Prototype running on τ²-bench</span><span class="pill">Preliminary results</span><span class="pill">Workshop paper target: Feb 2027</span></div>
+  </header>
+
+  <section>
+    <h2>Project summary</h2>
+    <ol class="bullets">
+      <li><strong>Problem.</strong> LLM agents increasingly take irreversible actions through tools (cancellations, refunds, order changes). Existing methods spend extra compute only where the model is <em>uncertain</em> and ignore how <em>costly</em> a mistake would be.</li>
+      <li><strong>Method (STAKES).</strong> A model-agnostic agent harness that types every tool call by reversibility (read, reversible, compensable, irreversible), estimates error risk from disagreement among sampled actions, and spends extra deliberation (re-voting, verification, asking the user) in proportion to <em>expected error cost</em>.</li>
+      <li><strong>Evaluation.</strong> A compute-matched reliability comparison on τ²-bench customer-service tasks with Gemini models. STAKES is compared against uniform and uncertainty-only compute allocation on success, consistency (pass^k), irreversible-error rate and cost. Success is graded from database state, not by LLM judges.</li>
+      <li><strong>Prototype.</strong> A working pipeline: an effect-type registry for every tool, an effect ledger that flags wrong writes against reference trajectories, reliability metrics with bootstrap confidence intervals, and four agent modes run side by side on the same tasks.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>The idea</h2>
+    <p>Most of an agent's steps are reads: looking up a reservation, checking a flight. A wrong read costs a few tokens, because the agent can just read again. A few steps commit state that cannot be restored, such as cancelling a non-refundable booking or issuing a travel certificate. Uncertainty-based methods treat these steps alike and spend on whatever the model is unsure about. They spend nothing on a confident action that happens to be wrong and irreversible.</p>
+    <p>STAKES allocates deliberation by the expected loss it can prevent, following the classical value-of-computation rule from metareasoning:</p>
+    <div class="formula">value(deliberate at step t) = P(action wrong) × <b>cost(action wrong | reversibility)</b> × P(deliberation fixes it) − price × tokens</div>
+    <p>Each tool is labelled once with its effect type, using the agent's own tools and the domain policy to decide whether an action can be undone:</p>
+    <div class="types">
+      <div class="type r"><strong>Read</strong>no state change<code>get_reservation_details</code></div>
+      <div class="type r"><strong>Reversible</strong>undo with own tools<code>update_reservation_passengers</code></div>
+      <div class="type i"><strong>Compensable</strong>undo only at a cost<code>update_reservation_flights</code></div>
+      <div class="type i"><strong>Irreversible</strong>no undo exists<code>cancel_reservation</code></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How the prototype works</h2>
+    <div class="figure">
+<pre class="mermaid">
+flowchart LR
+  U["Customer (simulated)"] <--> A["Agent proposes a tool call"]
+  A --> R{"Effect type?"}
+  R -- "read" --> X["Execute"]
+  R -- "write" --> S["Sample 2 more actions, measure disagreement"]
+  S --> V["Majority vote"]
+  V -- "reversible" --> X
+  V -- "compensable / irreversible" --> C["Policy verifier check"]
+  C -- "approve" --> X
+  C -- "objects" --> RV["Agent reconsiders once (often asks the customer)"]
+  RV --> X
+  X --> E[("τ²-bench airline database")]
+  X --> L[("Effect ledger: type, args, wrong-write flag")]
+</pre>
+    </div>
+    <div class="ladder">
+      <div class="step read"><div class="t">Baseline</div>Single run. Disagreement is measured silently at writes but never acted on.</div>
+      <div class="step"><div class="t">Uncertainty-only</div>Samples and votes at every tool step; verifies only when samples disagree.</div>
+      <div class="step"><div class="t">Verify every write</div>Simple rule: a policy check before any state change, no sampling.</div>
+      <div class="step irr"><div class="t">STAKES v0</div>Nothing on reads. Votes on writes. Verifies every compensable or irreversible write, even when confident.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>A failure STAKES is built for</h2>
+    <p>From the first smoke run (airline task 1, Gemini 2.5 Flash, baseline agent). The customer claims a support representative already approved a cancellation that the airline policy does not allow; the correct behaviour is to refuse. The agent found the right booking and then cancelled it. All three silent re-samples made the same call, so an uncertainty-based method would have seen no reason to look twice.</p>
+    <div class="trace">
+<span class="dim">turn 2–7 </span> get_user_details, get_reservation_details ×5   <span class="dim">[READ]</span><br>
+<span class="dim">turn 11  </span> <span class="bad">cancel_reservation("Q69X3R")</span>   <span class="dim">[IRREVERSIBLE]</span><br>
+<span class="dim">         </span> re-samples: Q69X3R, Q69X3R, Q69X3R  →  disagreement p̂ = 0.0<br>
+<span class="dim">         </span> reference solution: no cancellation · ledger: <span class="bad">wrong write</span> · episode failed
+    </div>
+    <p class="note">This is one anecdote, not evidence. Whether confident wrong writes are a large share of failures is exactly what the pre-registered pilot measures (GO if they make up at least 30% of failures).</p>
+  </section>
+
+  <section id="results">
+    <h2>Preliminary comparison</h2>
+    <p>Same 15 airline tasks from the τ²-bench training split, 2 trials each, for every method (30 paired episodes per method). Gemini 2.5 Flash plays both the agent and the simulated customer. Success means the final database matches the reference outcome.</p>
+    <div class="figure">
+      <table>
+        <thead>
+          <tr><th>Method</th><th>Success rate</th><th>pass^2 (succeeds both trials)</th><th>Wrong irreversible writes / episode</th><th>Cost / episode</th><th>Tokens / episode</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Baseline (single run)</td><td class="num">0.50 <span class="ci">[0.27, 0.73]</span></td><td class="num">0.40 <span class="ci">[0.13, 0.67]</span></td><td class="num">0.40</td><td class="num">$0.011</td><td class="num">73.6k</td></tr>
+          <tr><td>Uncertainty-only</td><td class="num">0.57 <span class="ci">[0.37, 0.77]</span></td><td class="num">0.40 <span class="ci">[0.13, 0.67]</span></td><td class="num">0.30</td><td class="num">$0.028</td><td class="num">140.5k</td></tr>
+          <tr><td>Verify every write</td><td class="num">0.60 <span class="ci">[0.40, 0.80]</span></td><td class="num">0.47 <span class="ci">[0.20, 0.73]</span></td><td class="num">0.33</td><td class="num">$0.018</td><td class="num">74.7k</td></tr>
+          <tr class="ours"><td><strong>STAKES v0</strong></td><td class="num">0.60 <span class="ci">[0.33, 0.87]</span></td><td class="num">0.60 <span class="ci">[0.33, 0.87]</span></td><td class="num">0.33</td><td class="num">$0.022</td><td class="num">104.1k</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Brackets are 95% bootstrap confidence intervals over tasks. "Wrong irreversible writes" counts compensable and irreversible database changes that match no step of the reference solution.</p>
+    <h3>How to read this</h3>
+    <ul class="built">
+      <li><strong>Direction, not evidence.</strong> STAKES has the highest consistency (pass^2 0.60 vs 0.40 for the baseline), but with 15 tasks every interval overlaps. No difference here is statistically significant.</li>
+      <li><strong>Uncertainty-only spent the most and gained the least in consistency.</strong> At 2.5× the baseline's tokens its pass^2 did not move, which matches the motivating hypothesis: much of its budget goes to reads (78% of the agent's tool calls are reads).</li>
+      <li><strong>The simple "verify every write" rule is a strong competitor.</strong> It matches STAKES on single-run success at lower cost. Separating the two is the central question for the full study, using a cost-matched budget sweep.</li>
+      <li><strong>The core premise holds so far.</strong> In the baseline runs, 33% of failures came from a confident wrong write (all re-samples agreed), just above the pre-registered 30% bar for continuing. That is 5 of 15 failures, so it is a first signal only.</li>
+      <li><strong>A measurement issue to fix.</strong> 14% of writes in successful episodes were flagged as wrong, meaning valid alternative paths are sometimes counted as errors. That is above our 10% tolerance, so the reference matching needs refining before the full pilot.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What is built</h2>
+    <ul class="built">
+      <li><strong>Effect registry</strong> for every airline and retail tool, each label with a written rationale; a test fails if any state-changing tool is unlabelled.</li>
+      <li><strong>Effect ledger</strong> that records every tool call and flags writes that match no step of the reference solution.</li>
+      <li><strong>Reliability metrics</strong>: pass^k and pass@k with unbiased estimators, bootstrap confidence intervals over tasks, irreversible-error rate.</li>
+      <li><strong>Agent harness</strong> with four modes on one code path, so the comparison differs only in where compute is spent.</li>
+      <li><strong>Pilot runner</strong>: resumable, records cost and tokens per call, and applies a go/no-go rule fixed before any data was seen.</li>
+      <li><strong>32 automated tests</strong>, including full offline τ²-bench episodes with a scripted model.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Next steps</h2>
+    <div class="next">
+      <div><div class="when">Weeks 1–3</div>Full go/no-go pilot on all 30 airline dev tasks × 4 trials; retail domain.</div>
+      <div><div class="when">Weeks 4–9</div>Cost-matched frontiers (sweep the compute budget), state read-back operator, open-weight models on GPU.</div>
+      <div><div class="when">Weeks 10–12</div>Ablations, error analysis, workshop paper submission.</div>
+      <div><div class="when">Feb–May 2027</div>Controlled environment varying the share of irreversible actions; AppWorld; main-track paper.</div>
+    </div>
+  </section>
+
+  <footer>
+    Built on τ²-bench (sierra-research, MIT licence) pinned at commit 033bf08. Agent and simulated customer: Gemini 2.5 Flash. Success is the τ²-bench database-state check only; the benchmark's LLM-judged components are excluded, so numbers are not comparable to the public leaderboard.
+  </footer>
+</main>
