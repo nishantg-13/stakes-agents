@@ -1,0 +1,59 @@
+{
+  "n_episodes": 30,
+  "n_tasks": 15,
+  "reliability": {
+    "1": {
+      "pass^k": [
+        0.5,
+        0.26666666666666666,
+        0.7333333333333333
+      ],
+      "pass@k": [
+        0.5,
+        0.26666666666666666,
+        0.7333333333333333
+      ]
+    },
+    "2": {
+      "pass^k": [
+        0.4,
+        0.2,
+        0.6666666666666666
+      ],
+      "pass@k": [
+        0.6,
+        0.3333333333333333,
+        0.8666666666666667
+      ]
+    }
+  },
+  "agent_cost_usd": 0.33705437,
+  "user_cost_usd": 0.12279533000000001,
+  "probe_cost_usd": 0.28347652,
+  "agent_tokens": 2207285,
+  "probe_tokens": 1796764,
+  "read_share_of_tool_steps": 0.7747747747747747,
+  "irreversible_error_rate": 0.26666666666666666,
+  "n_failed": 15,
+  "decisive_error_kinds": {
+    "wrong_write": 6,
+    "missed_write": 9
+  },
+  "wrong_write_by_effect": {
+    "COMPENSABLE": 5,
+    "IRREVERSIBLE": 1
+  },
+  "confident_wrong_write_share_of_failures": 0.3333333333333333,
+  "matcher_false_positive_rate": 0.0,
+  "probe_join_mismatches": 0,
+  "total_cost_usd": 0.6205308900000001,
+  "total_cost_per_episode_usd": 0.020684363,
+  "deliberation": {
+    "sampled_steps": 95,
+    "vote_switches": 0,
+    "verified_steps": 0,
+    "verifier_revisions": 0
+  },
+  "decision_rule": "GO if share >= 0.3; PIVOT if < 0.15; low p_hat <= 1/3",
+  "decision": "GO"
+}

@@ -26,15 +26,23 @@ LABELS = {
     "measure": "Baseline (single run)",
     "unc_only": "Uncertainty-only",
     "verify_writes": "Verify every write",
-    "stakes": "STAKES v0",
+    "stakes": "STAKES v0 (fixed rule)",
+    "voc": "STAKES (VOC)",
 }
 
 
 def compare(run_dirs: list[Path]) -> dict:
-    runs = {}
+    runs, base_mode, labels = {}, {}, {}
     for d in run_dirs:
         eps = load_episodes(d)
-        mode = json.loads((d / "run_config.json").read_text()).get("mode", d.name)
+        cfg = json.loads((d / "run_config.json").read_text())
+        base = cfg.get("mode", d.name)
+        lam = cfg.get("lam")
+        mode = base if lam is None else f"{base}@{lam:g}"  # several voc runs differ only by lam
+        if mode in runs:
+            raise ValueError(f"two run dirs map to the same condition {mode!r}")
+        base_mode[mode] = base
+        labels[mode] = LABELS.get(base, base) + ("" if lam is None else f", λ={lam:g}")
         runs[mode] = {(e["task_id"], e["trial"]): e for e in eps}
     common = set.intersection(*(set(r) for r in runs.values())) if runs else set()
     rows = []
@@ -53,7 +61,7 @@ def compare(run_dirs: list[Path]) -> dict:
         ]
         # In "measure" mode probes are never executed: report its cost WITHOUT probe tokens,
         # since the baseline agent would not pay them.
-        if mode == "measure":
+        if base_mode[mode] == "measure":
             cost = [(e["agent_cost"] or 0) for e in eps]
             toks = [e["agent_prompt_tokens"] + e["agent_completion_tokens"] for e in eps]
         wrong_irrev = [
@@ -63,7 +71,7 @@ def compare(run_dirs: list[Path]) -> dict:
         rows.append(
             {
                 "mode": mode,
-                "label": LABELS.get(mode, mode),
+                "label": labels[mode],
                 "n_episodes": len(eps),
                 "n_tasks": len(counts),
                 "success_rate": p1,  # pass^1 = pass@1, with 95% bootstrap CI over tasks

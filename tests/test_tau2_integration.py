@@ -116,7 +116,7 @@ def test_probe_agent_end_to_end_with_fake_llm(monkeypatch):
     assert rec["probe_cost"] == pytest.approx(0.003)
 
 
-def _run_fake_episode(monkeypatch, mode, probe_fn, verifier_fn=None):
+def _run_fake_episode(monkeypatch, mode, probe_fn, verifier_fn=None, **agent_kwargs):
     """Shared harness: scripted agent proposes read -> cancel -> text, fake user, fake probes."""
     import tau2.agent.llm_agent as llm_agent_mod
     import tau2.user.user_simulator as user_mod
@@ -169,7 +169,8 @@ def _run_fake_episode(monkeypatch, mode, probe_fn, verifier_fn=None):
 
     def factory(tools, domain_policy, **kw):
         holder["a"] = probe_mod.ProbeAgent(tools=tools, domain_policy=domain_policy, llm="fake",
-                                           llm_args={}, registry=reg, k0=3, mode=mode)
+                                           llm_args={}, registry=reg, k0=3, mode=mode,
+                                           **agent_kwargs)
         return holder["a"]
 
     import time
@@ -250,3 +251,57 @@ def test_transfer_is_not_a_wrong_write_and_summary_ignored():
     assert a == b
     led = build_ledger([{"turn": 0, "name": "transfer_to_human_agents", "arguments": {}, "error": False}], [], reg)
     assert not led.entries[0].erroneous
+
+
+def _agreeing_probe(kw, cancel, current):
+    calls = [(tc.name, dict(tc.arguments)) for tc in (current.tool_calls or [])]
+    return _msg(calls or None, content=current.content)
+
+
+def _voc_params():
+    from stakes.voc import VocParams
+    return VocParams(p_err={"IRREVERSIBLE": {"agree": 0.2, "disagree": 0.5}},
+                     p_err_default={"agree": 0.2, "disagree": 0.5}, phi_verify=0.5)
+
+
+@pytest.mark.parametrize("lam, expect_verify", [(0.05, True), (0.2, False)])
+def test_voc_verifies_confident_irreversible_only_when_worth_it(monkeypatch, lam, expect_verify):
+    # confident (p_hat = 0) irreversible write: VOC = 0.2 * 1.0 * 0.5 - lam * 1 = 0.1 - lam
+    _rec, probes, st = _run_fake_episode(
+        monkeypatch, "voc", _agreeing_probe, lambda kw: _msg(content="APPROVE"),
+        voc_params=_voc_params(), lam=lam,
+    )
+    step = next(p for p in probes if p["effect"] == "IRREVERSIBLE")
+    assert step["probed"] and step["p_hat"] == 0.0
+    assert step["voc"] == pytest.approx(0.1 - lam)
+    assert step["verified"] is expect_verify
+    assert ("stakes_verifier" in st["calls"]) is expect_verify
+    assert all(not p["probed"] for p in probes if p["effect"] == "READ")
+
+
+def test_voc_mode_requires_params():
+    with pytest.raises(ValueError, match="voc_params"):
+        import stakes.probe_agent as probe_mod
+        probe_mod.ProbeAgent(tools=[], domain_policy="", llm="fake", llm_args={},
+                             registry=None, mode="voc")
+
+
+def test_verifier_is_told_the_effect_type(monkeypatch):
+    seen = []
+
+    def probe(kw, cancel, current):  # one sample disagrees everywhere -> unc_only verifies all
+        calls = [(tc.name, dict(tc.arguments)) for tc in (current.tool_calls or [])]
+        if calls and len([c for c in seen if c == "s"]) % 3 == 0:
+            calls = [(calls[0][0], {"reservation_id": "ZZZZZZ"})]
+        seen.append("s")
+        return _msg(calls or None, content=current.content)
+
+    prompts = []
+
+    def verifier(kw):
+        prompts.append(kw["messages"][-1].content)
+        return _msg(content="APPROVE")
+
+    _run_fake_episode(monkeypatch, "unc_only", probe, verifier)
+    assert any("read-only lookup" in p for p in prompts)
+    assert any("cannot be undone" in p for p in prompts)

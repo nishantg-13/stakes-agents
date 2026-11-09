@@ -1,0 +1,16 @@
+{
+  "domain": "airline",
+  "split": "train",
+  "agent_llm": "gemini/gemini-2.5-flash",
+  "user_llm": "gemini/gemini-2.5-flash",
+  "agent_temperature": 0.0,
+  "user_temperature": 0.0,
+  "k0": 2,
+  "probe_temperature": 1.0,
+  "probe_reads_frac": 0.0,
+  "mode": "verify_writes",
+  "verifier_llm": "gemini/gemini-2.5-flash",
+  "evaluation": "ENV (DB + env assertions only; no LLM judge)",
+  "tau2_commit": "033bf082f48e4a3c6a1256208e93cf2ce9c3bb6f",
+  "created": "2026-11-08T17:32:03+00:00"
+}

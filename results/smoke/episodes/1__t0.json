@@ -1,0 +1,309 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "task_id": "1",
+ "trial": 0,
+ "seed": 300,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": null,
+ "user_cost": 0.0047913,
+ "agent_prompt_tokens": 74620,
+ "agent_completion_tokens": 2062,
+ "probe_cost": 0.00260376,
+ "probe_prompt_tokens": 31719,
+ "probe_completion_tokens": 483,
+ "n_assistant_msgs": 15,
+ "n_probes": 14,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "raj_sanchez_7340"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 3,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "MZDDS4"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 4,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "60RX9E"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 5,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "S5IK51"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 6,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "OUEA45"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 7,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "Q69X3R"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 11,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "Q69X3R"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": true,
+   "matched_gold": null,
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_user_details({\"user_id\": \"raj_sanchez_7340\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "get_reservation_details({\"reservation_id\": \"mzdds4\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "get_reservation_details({\"reservation_id\": \"60rx9e\"})",
+   "effect": "READ",
+   "probed": true,
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"60rx9e\"})",
+    "get_reservation_details({\"reservation_id\": \"60rx9e\"})",
+    "get_reservation_details({\"reservation_id\": \"60rx9e\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "probe_cost": 0.0010854200000000001,
+   "probe_prompt_tokens": 13320,
+   "probe_completion_tokens": 251,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "get_reservation_details({\"reservation_id\": \"s5ik51\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "get_reservation_details({\"reservation_id\": \"ouea45\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "get_reservation_details({\"reservation_id\": \"q69x3r\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 10,
+   "proposal": "cancel_reservation({\"reservation_id\": \"q69x3r\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "candidates": [
+    "cancel_reservation({\"reservation_id\": \"q69x3r\"})",
+    "cancel_reservation({\"reservation_id\": \"q69x3r\"})",
+    "cancel_reservation({\"reservation_id\": \"q69x3r\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "probe_cost": 0.00151834,
+   "probe_prompt_tokens": 18399,
+   "probe_completion_tokens": 232,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 11,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 12,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 13,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "wrong_write",
+  "effect": "IRREVERSIBLE",
+  "p_hat": 0.0,
+  "turn": 11,
+  "tool": "cancel_reservation"
+ }
+}

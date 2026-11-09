@@ -22,8 +22,9 @@ from pathlib import Path
 import stakes.tau2_setup  # noqa: F401  (must run before any tau2 import)
 from stakes.effects import EffectRegistry
 from stakes.episode import build_record
-from stakes.probe_agent import ProbeAgent
+from stakes.probe_agent import MODES, ProbeAgent
 from stakes.tau2_setup import REPO_ROOT, TAU2_COMMIT
+from stakes.voc import VocParams
 
 # Pre-registered thresholds (docs/decisions.md D-004). Do not change after seeing pilot data.
 LOW_P_HAT = 1 / 3 + 1e-9  # "confident" = at most 1 of k0=3 candidates disagrees
@@ -50,6 +51,13 @@ def cmd_run(args) -> int:
         print(f"Unlabeled state-changing tools: {missing}", file=sys.stderr)
         return 2
 
+    voc_params = None
+    if args.mode == "voc":
+        if not args.voc_params:
+            print("--mode voc needs --voc-params (fit with python -m stakes.voc)", file=sys.stderr)
+            return 2
+        voc_params = VocParams.load(args.voc_params)
+
     out = Path(args.out or REPO_ROOT / "results" / f"pilot_{args.domain}_{args.split}")
     (out / "episodes").mkdir(parents=True, exist_ok=True)
     meta = {
@@ -64,6 +72,9 @@ def cmd_run(args) -> int:
         "probe_reads_frac": args.probe_reads_frac,
         "mode": args.mode,
         "verifier_llm": args.verifier_llm or args.agent_llm,
+        "verifier_prompt": "v2",  # D-011: shared, effect-aware prompt + strict parse
+        "lam": args.lam if args.mode == "voc" else None,
+        "voc_params": voc_params.__dict__ if voc_params else None,
         "evaluation": "ENV (DB + env assertions only; no LLM judge)",
         "tau2_commit": TAU2_COMMIT,
     }
@@ -103,6 +114,8 @@ def cmd_run(args) -> int:
                 probe_seed=seed * 1000 + zlib.crc32(task.id.encode()) % 1000,
                 mode=args.mode,
                 verifier_llm=args.verifier_llm,
+                voc_params=voc_params,
+                lam=args.lam,
             )
             holder["agent"] = agent
             return agent
@@ -126,7 +139,7 @@ def cmd_run(args) -> int:
             seed=seed,
             registry=effect_registry,
             probes=holder["agent"].probe_dicts(),
-            meta={k: meta[k] for k in ("domain", "split", "agent_llm", "user_llm", "k0", "mode")},
+            meta={k: meta[k] for k in ("domain", "split", "agent_llm", "user_llm", "k0", "mode", "lam")},
         )
         path = out / "episodes" / f"{task.id}__t{trial}.json"
         tmp = path.with_suffix(".tmp")
@@ -267,10 +280,12 @@ def main(argv=None) -> int:
     r.add_argument(
         "--mode",
         default="measure",
-        choices=["measure", "uniform", "unc_only", "verify_writes", "stakes"],
+        choices=list(MODES),
         help="measure = baseline pilot (probes never executed); others act on deliberation",
     )
     r.add_argument("--verifier-llm", default=None, help="defaults to --agent-llm")
+    r.add_argument("--voc-params", default=None, help="YAML from python -m stakes.voc (voc mode)")
+    r.add_argument("--lam", type=float, default=0.0, help="price per LLM call (voc mode)")
     r.add_argument("--trials", type=int, default=4)
     r.add_argument("--num-tasks", type=int, default=None)
     r.add_argument("--max-steps", type=int, default=100)

@@ -1,0 +1,24 @@
+p_err:
+  COMPENSABLE:
+    agree: 0.3198
+    disagree: 0.4343
+  IRREVERSIBLE:
+    agree: 0.1769
+    disagree: 0.4818
+  REVERSIBLE:
+    agree: 0.1047
+    disagree: 0.4545
+p_err_default:
+  agree: 0.2093
+  disagree: 0.4545
+harm:
+  READ: 0.0
+  IDEMPOTENT: 0.1
+  REVERSIBLE: 0.25
+  COMPENSABLE: 0.6
+  IRREVERSIBLE: 1.0
+phi_verify: 0.5
+kappa_verify: 1.0
+source: 'fit_p_err on [''results/pilot_airline_measure'']; counts [n, wrong]={''COMPENSABLE'':
+  {''agree'': [8, 3], ''disagree'': [14, 6]}, ''IRREVERSIBLE'': {''agree'': [29, 5],
+  ''disagree'': [6, 3]}, ''REVERSIBLE'': {''agree'': [4, 0], ''disagree'': [0, 0]}}'

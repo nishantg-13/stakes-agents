@@ -1,0 +1,245 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "7",
+ "trial": 3,
+ "seed": 303,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.00710543,
+ "user_cost": 0.0018542,
+ "agent_prompt_tokens": 29632,
+ "agent_completion_tokens": 1805,
+ "probe_cost": 0.011202330000000002,
+ "probe_prompt_tokens": 38661,
+ "probe_completion_tokens": 3774,
+ "n_assistant_msgs": 8,
+ "n_probes": 7,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 1,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "XEHM4B"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 2,
+   "name": "get_flight_status",
+   "arguments": {
+    "flight_number": "HAT005",
+    "date": "2024-05-20"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 3,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "59XX6W"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 4,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "59XX6W"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "7_4",
+   "p_hat": 1.0
+  },
+  {
+   "turn": 6,
+   "name": "transfer_to_human_agents",
+   "arguments": {
+    "summary": "User wants to upgrade a basic economy flight (reservation XEHM4B) to business class and then cancel it. The policy has conflicting information regarding modification of basic economy flights."
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 1.0
+  }
+ ],
+ "unmatched_gold_writes": [
+  "7_2",
+  "7_3"
+ ],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "get_reservation_details({\"reservation_id\": \"xehm4b\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"xehm4b\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_flight_status({\"date\": \"2024-05-20\", \"flight_number\": \"hat005\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_flight_status({\"date\": \"2024-05-20\", \"flight_number\": \"hat005\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "get_reservation_details({\"reservation_id\": \"59xx6w\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"59xx6w\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"59xx6w\"})",
+    "get_reservation_details({\"reservation_id\": \"59xx6w\"})",
+    "get_reservation_details({\"reservation_id\": \"59xx6w\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0022031100000000003,
+   "probe_prompt_tokens": 11601,
+   "probe_completion_tokens": 558,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "cancel_reservation({\"reservation_id\": \"59xx6w\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "cancel_reservation({\"reservation_id\": \"59xx6w\"})",
+   "candidates": [
+    "<text>",
+    "<text>",
+    "<text>"
+   ],
+   "p_hat": 1.0,
+   "modal_disagreement": 0.25,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0035702100000000003,
+   "probe_prompt_tokens": 12786,
+   "probe_completion_tokens": 1251,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "transfer_to_human_agents({})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "transfer_to_human_agents({})",
+   "candidates": [
+    "<text>",
+    "<text>",
+    "<text>"
+   ],
+   "p_hat": 1.0,
+   "modal_disagreement": 0.25,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.005429010000000001,
+   "probe_prompt_tokens": 14274,
+   "probe_completion_tokens": 1965,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "missed_write",
+  "effect": null,
+  "p_hat": null,
+  "turn": null,
+  "tool": null
+ }
+}

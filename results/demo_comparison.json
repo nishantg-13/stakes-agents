@@ -1,0 +1,97 @@
+{
+  "common_episodes": 30,
+  "rows": [
+    {
+      "mode": "measure",
+      "label": "Baseline (single run)",
+      "n_episodes": 30,
+      "n_tasks": 15,
+      "success_rate": [
+        0.5,
+        0.26666666666666666,
+        0.7333333333333333
+      ],
+      "pass^2": [
+        0.4,
+        0.13333333333333333,
+        0.6666666666666666
+      ],
+      "irreversible_error_rate": 0.26666666666666666,
+      "episodes_with_wrong_irreversible": 0.2,
+      "cost_per_episode_usd": 0.011235145666666668,
+      "tokens_per_episode": 73576.16666666667,
+      "vote_switches": 0,
+      "verified_steps": 0,
+      "verifier_revisions": 0
+    },
+    {
+      "mode": "unc_only",
+      "label": "Uncertainty-only",
+      "n_episodes": 30,
+      "n_tasks": 15,
+      "success_rate": [
+        0.5666666666666667,
+        0.36666666666666664,
+        0.7666666666666667
+      ],
+      "pass^2": [
+        0.4,
+        0.13333333333333333,
+        0.6666666666666666
+      ],
+      "irreversible_error_rate": 0.13333333333333333,
+      "episodes_with_wrong_irreversible": 0.1,
+      "cost_per_episode_usd": 0.02758214066666666,
+      "tokens_per_episode": 140500.53333333333,
+      "vote_switches": 11,
+      "verified_steps": 44,
+      "verifier_revisions": 24
+    },
+    {
+      "mode": "verify_writes",
+      "label": "Verify every write",
+      "n_episodes": 30,
+      "n_tasks": 15,
+      "success_rate": [
+        0.6,
+        0.4,
+        0.8
+      ],
+      "pass^2": [
+        0.4666666666666667,
+        0.2,
+        0.7333333333333333
+      ],
+      "irreversible_error_rate": 0.13333333333333333,
+      "episodes_with_wrong_irreversible": 0.13333333333333333,
+      "cost_per_episode_usd": 0.018238063333333332,
+      "tokens_per_episode": 74680.83333333333,
+      "vote_switches": 0,
+      "verified_steps": 56,
+      "verifier_revisions": 12
+    },
+    {
+      "mode": "stakes",
+      "label": "STAKES v0",
+      "n_episodes": 30,
+      "n_tasks": 15,
+      "success_rate": [
+        0.6,
+        0.3333333333333333,
+        0.8666666666666667
+      ],
+      "pass^2": [
+        0.6,
+        0.3333333333333333,
+        0.8666666666666667
+      ],
+      "irreversible_error_rate": 0.13333333333333333,
+      "episodes_with_wrong_irreversible": 0.13333333333333333,
+      "cost_per_episode_usd": 0.022432203999999997,
+      "tokens_per_episode": 104090.4,
+      "vote_switches": 3,
+      "verified_steps": 55,
+      "verifier_revisions": 13
+    }
+  ]
+}

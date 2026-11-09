@@ -1,0 +1,84 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "46",
+ "trial": 0,
+ "seed": 300,
+ "reward": 1.0,
+ "success": true,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.00147322,
+ "user_cost": 0.0007627,
+ "agent_prompt_tokens": 7026,
+ "agent_completion_tokens": 319,
+ "probe_cost": 0.00450163,
+ "probe_prompt_tokens": 10437,
+ "probe_completion_tokens": 1435,
+ "n_assistant_msgs": 3,
+ "n_probes": 2,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 1,
+   "name": "transfer_to_human_agents",
+   "arguments": {
+    "summary": "The user wants to cancel the travel insurance purchased for their flight and receive a full refund. The current tools and policy do not support cancelling insurance after booking."
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "transfer_to_human_agents({})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "transfer_to_human_agents({})",
+   "candidates": [
+    "transfer_to_human_agents({})",
+    "transfer_to_human_agents({})",
+    "transfer_to_human_agents({})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00450163,
+   "probe_prompt_tokens": 10437,
+   "probe_completion_tokens": 1435,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": null
+}

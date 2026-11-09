@@ -1,0 +1,486 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 2,
+ "mode": "unc_only",
+ "task_id": "7",
+ "trial": 1,
+ "seed": 301,
+ "reward": 1.0,
+ "success": true,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.0176595,
+ "user_cost": 0.00377281,
+ "agent_prompt_tokens": 84573,
+ "agent_completion_tokens": 3813,
+ "probe_cost": 0.031287060000000005,
+ "probe_prompt_tokens": 136663,
+ "probe_completion_tokens": 9123,
+ "n_assistant_msgs": 16,
+ "n_probes": 15,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 1,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "XEHM4B"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 2,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "59XX6W"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 4,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "59XX6W"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "7_4",
+   "p_hat": 0.0
+  },
+  {
+   "turn": 6,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "daiki_muller_1116"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.5
+  },
+  {
+   "turn": 8,
+   "name": "update_reservation_flights",
+   "arguments": {
+    "payment_id": "credit_card_2408938",
+    "reservation_id": "XEHM4B",
+    "cabin": "business",
+    "flights": [
+     {
+      "price": 65,
+      "origin": "LAS",
+      "destination": "ATL",
+      "flight_number": "HAT005",
+      "date": "2024-05-20"
+     },
+     {
+      "price": 83,
+      "origin": "ATL",
+      "date": "2024-05-30",
+      "destination": "LAS",
+      "flight_number": "HAT178"
+     }
+    ]
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "7_2",
+   "p_hat": 0.0
+  },
+  {
+   "turn": 9,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "XEHM4B"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "7_3",
+   "p_hat": 0.0
+  },
+  {
+   "turn": 10,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "7WPL39"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.5
+  },
+  {
+   "turn": 11,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "3EMQJ6"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 12,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "A90KR2"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 13,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "9MRJD4"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "get_reservation_details({\"reservation_id\": \"xehm4b\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"xehm4b\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"xehm4b\"})",
+    "get_reservation_details({\"reservation_id\": \"xehm4b\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00133076,
+   "probe_prompt_tokens": 6944,
+   "probe_completion_tokens": 290,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_reservation_details({\"reservation_id\": \"59xx6w\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"59xx6w\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"59xx6w\"})",
+    "get_reservation_details({\"reservation_id\": \"59xx6w\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00218364,
+   "probe_prompt_tokens": 7628,
+   "probe_completion_tokens": 729,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "cancel_reservation({\"reservation_id\": \"59xx6w\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "cancel_reservation({\"reservation_id\": \"59xx6w\"})",
+   "candidates": [
+    "cancel_reservation({\"reservation_id\": \"59xx6w\"})",
+    "cancel_reservation({\"reservation_id\": \"59xx6w\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00382842,
+   "probe_prompt_tokens": 8600,
+   "probe_completion_tokens": 1299,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "get_user_details({\"user_id\": \"daiki_muller_1116\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_user_details({\"user_id\": \"daiki_muller_1116\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"xehm4b\"})",
+    "get_user_details({\"user_id\": \"daiki_muller_1116\"})"
+   ],
+   "p_hat": 0.5,
+   "modal_disagreement": 0.33333333333333337,
+   "switched_by_vote": false,
+   "verified": true,
+   "verdict": "APPROVE",
+   "revised": false,
+   "probe_cost": 0.004889310000000001,
+   "probe_prompt_tokens": 12935,
+   "probe_completion_tokens": 1629,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "get_reservation_details({\"reservation_id\": \"xehm4b\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"7wpl39\"})",
+    "<text>"
+   ],
+   "p_hat": 1.0,
+   "modal_disagreement": 0.6666666666666667,
+   "switched_by_vote": false,
+   "verified": true,
+   "verdict": "REVISE: The agent already has the details for reservation XEHM4B; re-calling `get_reservation_details` is redundant and will not provide the necessary current business class prices for the upgrade.",
+   "revised": true,
+   "probe_cost": 0.00976155,
+   "probe_prompt_tokens": 19273,
+   "probe_completion_tokens": 3207,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat005\", \"origin\": \"las\", \"price\": 65.0}, {\"date\": \"2024-05-30\", \"destination\": \"las\", \"flight_number\": \"hat178\", \"origin\": \"atl\", \"price\": 83.0}], \"payment_id\": \"credit_card_2408938\", \"reservation_id\": \"xehm4b\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat005\", \"origin\": \"las\", \"price\": 65.0}, {\"date\": \"2024-05-30\", \"destination\": \"las\", \"flight_number\": \"hat178\", \"origin\": \"atl\", \"price\": 83.0}], \"payment_id\": \"credit_card_2408938\", \"reservation_id\": \"xehm4b\"})",
+   "candidates": [
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat005\", \"origin\": \"las\", \"price\": 65.0}, {\"date\": \"2024-05-30\", \"destination\": \"las\", \"flight_number\": \"hat178\", \"origin\": \"atl\", \"price\": 83.0}], \"payment_id\": \"credit_card_2408938\", \"reservation_id\": \"xehm4b\"})",
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat005\", \"origin\": \"las\", \"price\": 65.0}, {\"date\": \"2024-05-30\", \"destination\": \"las\", \"flight_number\": \"hat178\", \"origin\": \"atl\", \"price\": 83.0}], \"payment_id\": \"credit_card_2408938\", \"reservation_id\": \"xehm4b\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0033133600000000004,
+   "probe_prompt_tokens": 10612,
+   "probe_completion_tokens": 1063,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "cancel_reservation({\"reservation_id\": \"xehm4b\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "cancel_reservation({\"reservation_id\": \"xehm4b\"})",
+   "candidates": [
+    "cancel_reservation({\"reservation_id\": \"xehm4b\"})",
+    "cancel_reservation({\"reservation_id\": \"xehm4b\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00097768,
+   "probe_prompt_tokens": 11578,
+   "probe_completion_tokens": 91,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "get_reservation_details({\"reservation_id\": \"7wpl39\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"7wpl39\"})",
+   "candidates": [
+    "get_user_details({\"user_id\": \"daiki_muller_1116\"})",
+    "get_reservation_details({\"reservation_id\": \"7wpl39\"})"
+   ],
+   "p_hat": 0.5,
+   "modal_disagreement": 0.33333333333333337,
+   "switched_by_vote": false,
+   "verified": true,
+   "verdict": "APPROVE",
+   "revised": false,
+   "probe_cost": 0.00280942,
+   "probe_prompt_tokens": 17165,
+   "probe_completion_tokens": 679,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 10,
+   "proposal": "get_reservation_details({\"reservation_id\": \"3emqj6\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"3emqj6\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"3emqj6\"})",
+    "get_reservation_details({\"reservation_id\": \"3emqj6\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0008458599999999999,
+   "probe_prompt_tokens": 13238,
+   "probe_completion_tokens": 46,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 11,
+   "proposal": "get_reservation_details({\"reservation_id\": \"a90kr2\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"a90kr2\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"a90kr2\"})",
+    "get_reservation_details({\"reservation_id\": \"a90kr2\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00059518,
+   "probe_prompt_tokens": 14044,
+   "probe_completion_tokens": 46,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 12,
+   "proposal": "get_reservation_details({\"reservation_id\": \"9mrjd4\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"9mrjd4\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"9mrjd4\"})",
+    "get_reservation_details({\"reservation_id\": \"9mrjd4\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0007518799999999999,
+   "probe_prompt_tokens": 14646,
+   "probe_completion_tokens": 44,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 13,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 14,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": null
+}

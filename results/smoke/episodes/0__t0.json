@@ -1,0 +1,174 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "task_id": "0",
+ "trial": 0,
+ "seed": 300,
+ "reward": 1.0,
+ "success": true,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": null,
+ "user_cost": 0.0015767,
+ "agent_prompt_tokens": 26149,
+ "agent_completion_tokens": 1067,
+ "probe_cost": 0.00321578,
+ "probe_prompt_tokens": 11856,
+ "probe_completion_tokens": 914,
+ "n_assistant_msgs": 8,
+ "n_probes": 7,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 3,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "EHGLP3"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 4,
+   "name": "get_flight_status",
+   "arguments": {
+    "date": "2024-05-17",
+    "flight_number": "HAT156"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 5,
+   "name": "get_flight_status",
+   "arguments": {
+    "date": "2024-05-17",
+    "flight_number": "HAT021"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 6,
+   "name": "transfer_to_human_agents",
+   "arguments": {
+    "summary": "User wants to cancel reservation EHGLP3 due to change of plans. None of the cancellation conditions are met (not within 24 hours, not airline cancelled, not business class, no travel insurance)."
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": true,
+   "matched_gold": null,
+   "p_hat": 1.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "get_reservation_details({\"reservation_id\": \"ehglp3\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "get_flight_status({\"date\": \"2024-05-17\", \"flight_number\": \"hat156\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "get_flight_status({\"date\": \"2024-05-17\", \"flight_number\": \"hat021\"})",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "transfer_to_human_agents({\"summary\": \"user wants to cancel reservation ehglp3 due to change of plans. none of the cancellation conditions are met (not within 24 hours, not airline cancelled, not business class, no travel insurance).\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "candidates": [
+    "transfer_to_human_agents({\"summary\": \"user wants to cancel a reservation (ehglp3) due to change of plans. none of the cancellation policy rules are met: booking not within 24 hours, flight not cancelled by airline, not a business flight, and no travel insurance. cannot proceed with cancellation.\"})",
+    "transfer_to_human_agents({\"summary\": \"user wants to cancel a reservation (ehglp3) due to a change of plans, but none of the cancellation criteria (booking within 24hrs, airline cancellation, business flight, or travel insurance covering the reason) are met. the agent cannot proceed with the cancellation.\"})",
+    "transfer_to_human_agents({\"summary\": \"user wants to cancel a reservation (ehglp3) due to a change of plans, but none of the cancellation policy conditions are met (not within 24h, not airline cancelled, not business class, no travel insurance).\"})"
+   ],
+   "p_hat": 1.0,
+   "modal_disagreement": 0.75,
+   "probe_cost": 0.00321578,
+   "probe_prompt_tokens": 11856,
+   "probe_completion_tokens": 914,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": null
+}

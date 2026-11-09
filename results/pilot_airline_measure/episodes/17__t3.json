@@ -1,0 +1,167 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "17",
+ "trial": 3,
+ "seed": 303,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.0030049,
+ "user_cost": 0.0020617,
+ "agent_prompt_tokens": 19312,
+ "agent_completion_tokens": 457,
+ "probe_cost": 0.00397925,
+ "probe_prompt_tokens": 22920,
+ "probe_completion_tokens": 923,
+ "n_assistant_msgs": 6,
+ "n_probes": 5,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "omar_rossi_1241"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 4,
+   "name": "transfer_to_human_agents",
+   "arguments": {
+    "summary": "User wants to modify a reservation but cannot identify the correct reservation ID from the list provided."
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.6666666666666666
+  }
+ ],
+ "unmatched_gold_writes": [
+  "17_0",
+  "17_1",
+  "17_2"
+ ],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_user_details({\"user_id\": \"omar_rossi_1241\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_user_details({\"user_id\": \"omar_rossi_1241\"})",
+   "candidates": [
+    "get_user_details({\"user_id\": \"omar_rossi_1241\"})",
+    "get_user_details({\"user_id\": \"omar_rossi_1241\"})",
+    "get_user_details({\"user_id\": \"omar_rossi_1241\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00201314,
+   "probe_prompt_tokens": 10581,
+   "probe_completion_tokens": 422,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "transfer_to_human_agents({})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "transfer_to_human_agents({})",
+   "candidates": [
+    "transfer_to_human_agents({})",
+    "get_reservation_details({\"reservation_id\": \"um3og5\"})",
+    "get_reservation_details({\"reservation_id\": \"um3og5\"})"
+   ],
+   "p_hat": 0.6666666666666666,
+   "modal_disagreement": 0.5,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00196611,
+   "probe_prompt_tokens": 12339,
+   "probe_completion_tokens": 501,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "missed_write",
+  "effect": null,
+  "p_hat": null,
+  "turn": null,
+  "tool": null
+ }
+}

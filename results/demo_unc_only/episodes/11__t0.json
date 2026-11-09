@@ -1,0 +1,262 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 2,
+ "mode": "unc_only",
+ "task_id": "11",
+ "trial": 0,
+ "seed": 300,
+ "reward": 1.0,
+ "success": true,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.00711743,
+ "user_cost": 0.00378256,
+ "agent_prompt_tokens": 34541,
+ "agent_completion_tokens": 1697,
+ "probe_cost": 0.00842183,
+ "probe_prompt_tokens": 36518,
+ "probe_completion_tokens": 2582,
+ "n_assistant_msgs": 9,
+ "n_probes": 8,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 3,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "GV1N64"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.5
+  },
+  {
+   "turn": 4,
+   "name": "search_direct_flight",
+   "arguments": {
+    "origin": "LAS",
+    "date": "2024-05-19",
+    "destination": "DEN"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 5,
+   "name": "search_direct_flight",
+   "arguments": {
+    "origin": "DEN",
+    "destination": "LAS",
+    "date": "2024-05-20"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 7,
+   "name": "update_reservation_flights",
+   "arguments": {
+    "reservation_id": "GV1N64",
+    "cabin": "basic_economy",
+    "payment_id": "gift_card_1642017",
+    "flights": [
+     {
+      "origin": "LAS",
+      "destination": "DEN",
+      "date": "2024-05-19",
+      "flight_number": "HAT003"
+     },
+     {
+      "destination": "LAS",
+      "date": "2024-05-20",
+      "flight_number": "HAT290",
+      "origin": "DEN"
+     }
+    ]
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "11_0",
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "get_reservation_details({\"reservation_id\": \"gv1n64\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"gv1n64\"})",
+   "candidates": [
+    "get_user_details({\"user_id\": \"james_patel_9828\"})",
+    "get_reservation_details({\"reservation_id\": \"gv1n64\"})"
+   ],
+   "p_hat": 0.5,
+   "modal_disagreement": 0.33333333333333337,
+   "switched_by_vote": false,
+   "verified": true,
+   "verdict": "APPROVE",
+   "revised": false,
+   "probe_cost": 0.00258391,
+   "probe_prompt_tokens": 9574,
+   "probe_completion_tokens": 784,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})",
+   "candidates": [
+    "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})",
+    "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00247314,
+   "probe_prompt_tokens": 8122,
+   "probe_completion_tokens": 792,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})",
+   "candidates": [
+    "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})",
+    "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00127378,
+   "probe_prompt_tokens": 8746,
+   "probe_completion_tokens": 370,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "update_reservation_flights({\"cabin\": \"basic_economy\", \"flights\": [{\"date\": \"2024-05-19\", \"destination\": \"den\", \"flight_number\": \"hat003\", \"origin\": \"las\"}, {\"date\": \"2024-05-20\", \"destination\": \"las\", \"flight_number\": \"hat290\", \"origin\": \"den\"}], \"payment_id\": \"gift_card_1642017\", \"reservation_id\": \"gv1n64\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "update_reservation_flights({\"cabin\": \"basic_economy\", \"flights\": [{\"date\": \"2024-05-19\", \"destination\": \"den\", \"flight_number\": \"hat003\", \"origin\": \"las\"}, {\"date\": \"2024-05-20\", \"destination\": \"las\", \"flight_number\": \"hat290\", \"origin\": \"den\"}], \"payment_id\": \"gift_card_1642017\", \"reservation_id\": \"gv1n64\"})",
+   "candidates": [
+    "update_reservation_flights({\"cabin\": \"basic_economy\", \"flights\": [{\"date\": \"2024-05-19\", \"destination\": \"den\", \"flight_number\": \"hat003\", \"origin\": \"las\"}, {\"date\": \"2024-05-20\", \"destination\": \"las\", \"flight_number\": \"hat290\", \"origin\": \"den\"}], \"payment_id\": \"gift_card_1642017\", \"reservation_id\": \"gv1n64\"})",
+    "update_reservation_flights({\"cabin\": \"basic_economy\", \"flights\": [{\"date\": \"2024-05-19\", \"destination\": \"den\", \"flight_number\": \"hat003\", \"origin\": \"las\"}, {\"date\": \"2024-05-20\", \"destination\": \"las\", \"flight_number\": \"hat290\", \"origin\": \"den\"}], \"payment_id\": \"gift_card_1642017\", \"reservation_id\": \"gv1n64\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.002091,
+   "probe_prompt_tokens": 10076,
+   "probe_completion_tokens": 636,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": null
+}

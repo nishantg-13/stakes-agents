@@ -1,0 +1,83 @@
+{
+  "n_episodes": 120,
+  "n_tasks": 30,
+  "reliability": {
+    "1": {
+      "pass^k": [
+        0.6333333333333333,
+        0.48333333333333334,
+        0.7666666666666667
+      ],
+      "pass@k": [
+        0.6333333333333333,
+        0.48333333333333334,
+        0.7666666666666667
+      ]
+    },
+    "2": {
+      "pass^k": [
+        0.5444444444444445,
+        0.3777777777777778,
+        0.7000000000000001
+      ],
+      "pass@k": [
+        0.7222222222222222,
+        0.5722222222222224,
+        0.8555555555555556
+      ]
+    },
+    "3": {
+      "pass^k": [
+        0.5,
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "pass@k": [
+        0.7666666666666667,
+        0.6166666666666667,
+        0.8916666666666667
+      ]
+    },
+    "4": {
+      "pass^k": [
+        0.4666666666666667,
+        0.3,
+        0.6333333333333333
+      ],
+      "pass@k": [
+        0.8,
+        0.6333333333333333,
+        0.9333333333333333
+      ]
+    }
+  },
+  "agent_cost_usd": 1.25298336,
+  "user_cost_usd": 0.4886015,
+  "probe_cost_usd": 0.8216314100000001,
+  "agent_tokens": 6449973,
+  "probe_tokens": 4968866,
+  "read_share_of_tool_steps": 0.7230273752012882,
+  "irreversible_error_rate": 0.14166666666666666,
+  "n_failed": 44,
+  "decisive_error_kinds": {
+    "wrong_write": 15,
+    "missed_write": 29
+  },
+  "wrong_write_by_effect": {
+    "COMPENSABLE": 9,
+    "IRREVERSIBLE": 6
+  },
+  "confident_wrong_write_share_of_failures": 0.20454545454545456,
+  "matcher_false_positive_rate": 0.0,
+  "probe_join_mismatches": 0,
+  "total_cost_usd": 2.07461477,
+  "total_cost_per_episode_usd": 0.017288456416666667,
+  "deliberation": {
+    "sampled_steps": 287,
+    "vote_switches": 0,
+    "verified_steps": 0,
+    "verifier_revisions": 0
+  },
+  "decision_rule": "GO if share >= 0.3; PIVOT if < 0.15; low p_hat <= 1/3",
+  "decision": "GO, lead with RQ1"
+}

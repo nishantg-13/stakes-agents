@@ -1,0 +1,300 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "12",
+ "trial": 1,
+ "seed": 301,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.00892525,
+ "user_cost": 0.0024664,
+ "agent_prompt_tokens": 40381,
+ "agent_completion_tokens": 2182,
+ "probe_cost": 0.00871411,
+ "probe_prompt_tokens": 43821,
+ "probe_completion_tokens": 2455,
+ "n_assistant_msgs": 10,
+ "n_probes": 9,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "YAX4DR"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 3,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "chen_lee_6825"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 5,
+   "name": "update_reservation_flights",
+   "arguments": {
+    "payment_id": "credit_card_4938634",
+    "reservation_id": "YAX4DR",
+    "flights": [
+     {
+      "flight_number": "HAT235",
+      "destination": "MCO",
+      "date": "2024-05-18",
+      "price": 122,
+      "origin": "BOS"
+     },
+     {
+      "price": 127,
+      "flight_number": "HAT298",
+      "date": "2024-05-19",
+      "destination": "MSP",
+      "origin": "MCO"
+     }
+    ],
+    "cabin": "business"
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": false,
+   "erroneous": true,
+   "matched_gold": null,
+   "p_hat": 0.6666666666666666
+  },
+  {
+   "turn": 6,
+   "name": "update_reservation_baggages",
+   "arguments": {
+    "reservation_id": "YAX4DR",
+    "nonfree_baggages": 0,
+    "payment_id": "credit_card_4938634",
+    "total_baggages": 2
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "12_4",
+   "p_hat": 0.0
+  },
+  {
+   "turn": 8,
+   "name": "transfer_to_human_agents",
+   "arguments": {
+    "summary": "User is unhappy with the business class upgrade cost of $1200, which exceeded their stated limit of $650. User wants to talk to someone to fix this."
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_reservation_details({\"reservation_id\": \"yax4dr\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"yax4dr\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "get_user_details({\"user_id\": \"chen_lee_6825\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_user_details({\"user_id\": \"chen_lee_6825\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\", \"price\": 122.0}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\", \"price\": 127.0}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\", \"price\": 122.0}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\", \"price\": 127.0}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+   "candidates": [
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\"}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\"}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\"}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\"}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\", \"price\": 122.0}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\", \"price\": 127.0}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})"
+   ],
+   "p_hat": 0.6666666666666666,
+   "modal_disagreement": 0.5,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.004882490000000001,
+   "probe_prompt_tokens": 13101,
+   "probe_completion_tokens": 1580,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+   "candidates": [
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0010215900000000002,
+   "probe_prompt_tokens": 14565,
+   "probe_completion_tokens": 171,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "transfer_to_human_agents({})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "transfer_to_human_agents({})",
+   "candidates": [
+    "transfer_to_human_agents({})",
+    "transfer_to_human_agents({})",
+    "transfer_to_human_agents({})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00281003,
+   "probe_prompt_tokens": 16155,
+   "probe_completion_tokens": 704,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "wrong_write",
+  "effect": "COMPENSABLE",
+  "p_hat": 0.6666666666666666,
+  "turn": 5,
+  "tool": "update_reservation_flights"
+ }
+}

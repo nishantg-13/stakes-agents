@@ -1,0 +1,557 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "20",
+ "trial": 1,
+ "seed": 301,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.02705712,
+ "user_cost": 0.007862220000000001,
+ "agent_prompt_tokens": 130444,
+ "agent_completion_tokens": 6618,
+ "probe_cost": 0.01149202,
+ "probe_prompt_tokens": 95523,
+ "probe_completion_tokens": 2497,
+ "n_assistant_msgs": 18,
+ "n_probes": 17,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "list_all_airports",
+   "arguments": {},
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.6666666666666666
+  },
+  {
+   "turn": 4,
+   "name": "search_direct_flight",
+   "arguments": {
+    "origin": "JFK",
+    "date": "2024-05-20",
+    "destination": "SEA"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 5,
+   "name": "search_direct_flight",
+   "arguments": {
+    "date": "2024-05-20",
+    "origin": "LGA",
+    "destination": "SEA"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 7,
+   "name": "search_onestop_flight",
+   "arguments": {
+    "destination": "SEA",
+    "date": "2024-05-20",
+    "origin": "JFK"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 8,
+   "name": "search_onestop_flight",
+   "arguments": {
+    "date": "2024-05-20",
+    "destination": "SEA",
+    "origin": "LGA"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 11,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "mia_li_3668"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 14,
+   "name": "book_reservation",
+   "arguments": {
+    "passengers": [
+     {
+      "dob": "1990-04-05",
+      "last_name": "Li",
+      "first_name": "Mia"
+     }
+    ],
+    "payment_methods": [
+     {
+      "source": "certificate",
+      "id": "certificate_4856383"
+     },
+     {
+      "source": "certificate",
+      "id": "certificate_7504069"
+     }
+    ],
+    "insurance": "no",
+    "origin": "JFK",
+    "user_id": "mia_li_3668",
+    "destination": "SEA",
+    "flight_type": "one_way",
+    "cabin": "economy",
+    "flights": [
+     {
+      "date": "2024-05-20",
+      "flight_number": "HAT136",
+      "origin": "JFK",
+      "destination": "ATL"
+     },
+     {
+      "origin": "ATL",
+      "flight_number": "HAT039",
+      "destination": "SEA",
+      "date": "2024-05-20"
+     }
+    ],
+    "total_baggages": 3,
+    "nonfree_baggages": 0
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": true,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.6666666666666666
+  },
+  {
+   "turn": 16,
+   "name": "book_reservation",
+   "arguments": {
+    "flight_type": "one_way",
+    "user_id": "mia_li_3668",
+    "nonfree_baggages": 0,
+    "flights": [
+     {
+      "destination": "ATL",
+      "flight_number": "HAT136",
+      "date": "2024-05-20",
+      "origin": "JFK"
+     },
+     {
+      "date": "2024-05-20",
+      "flight_number": "HAT039",
+      "destination": "SEA",
+      "origin": "ATL"
+     }
+    ],
+    "destination": "SEA",
+    "origin": "JFK",
+    "insurance": "no",
+    "total_baggages": 3,
+    "cabin": "economy",
+    "payment_methods": [
+     {
+      "id": "certificate_4856383",
+      "amount": 100,
+      "source": "certificate"
+     },
+     {
+      "id": "certificate_7504069",
+      "amount": 250,
+      "source": "certificate"
+     }
+    ],
+    "passengers": [
+     {
+      "last_name": "Li",
+      "dob": "1990-04-05",
+      "first_name": "Mia"
+     }
+    ]
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": true,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.3333333333333333
+  }
+ ],
+ "unmatched_gold_writes": [
+  "20_0"
+ ],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "list_all_airports({})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "list_all_airports({})",
+   "candidates": [
+    "list_all_airports({})",
+    "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"jfk\"})",
+    "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"jfk\"})"
+   ],
+   "p_hat": 0.6666666666666666,
+   "modal_disagreement": 0.5,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00167129,
+   "probe_prompt_tokens": 10428,
+   "probe_completion_tokens": 302,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"jfk\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"jfk\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"lga\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"lga\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "search_onestop_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"jfk\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_onestop_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"jfk\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "search_onestop_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"lga\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "search_onestop_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"lga\"})",
+   "candidates": [
+    "search_onestop_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"lga\"})",
+    "search_onestop_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"lga\"})",
+    "search_onestop_flight({\"date\": \"2024-05-20\", \"destination\": \"sea\", \"origin\": \"lga\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0014858100000000002,
+   "probe_prompt_tokens": 16665,
+   "probe_completion_tokens": 117,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 10,
+   "proposal": "get_user_details({\"user_id\": \"mia_li_3668\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_user_details({\"user_id\": \"mia_li_3668\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 11,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 12,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 13,
+   "proposal": "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"id\": \"certificate_4856383\", \"source\": \"certificate\"}, {\"id\": \"certificate_7504069\", \"source\": \"certificate\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"id\": \"certificate_4856383\", \"source\": \"certificate\"}, {\"id\": \"certificate_7504069\", \"source\": \"certificate\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})",
+   "candidates": [
+    "<text>",
+    "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"id\": \"certificate_4856383\", \"source\": \"certificate\"}, {\"id\": \"certificate_7504069\", \"source\": \"certificate\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})",
+    "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"amount\": 100.0, \"id\": \"certificate_4856383\"}, {\"amount\": 155.0, \"id\": \"certificate_7504069\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})"
+   ],
+   "p_hat": 0.6666666666666666,
+   "modal_disagreement": 0.5,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0038541700000000005,
+   "probe_prompt_tokens": 33543,
+   "probe_completion_tokens": 994,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 14,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 15,
+   "proposal": "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"amount\": 100.0, \"id\": \"certificate_4856383\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_7504069\", \"source\": \"certificate\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"amount\": 100.0, \"id\": \"certificate_4856383\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_7504069\", \"source\": \"certificate\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})",
+   "candidates": [
+    "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"amount\": 100.0, \"id\": \"certificate_4856383\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_7504069\", \"source\": \"certificate\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})",
+    "get_user_details({\"user_id\": \"mia_li_3668\"})",
+    "book_reservation({\"cabin\": \"economy\", \"destination\": \"sea\", \"flight_type\": \"one_way\", \"flights\": [{\"date\": \"2024-05-20\", \"destination\": \"atl\", \"flight_number\": \"hat136\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-20\", \"destination\": \"sea\", \"flight_number\": \"hat039\", \"origin\": \"atl\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1990-04-05\", \"first_name\": \"mia\", \"last_name\": \"li\"}], \"payment_methods\": [{\"amount\": 100.0, \"id\": \"certificate_4856383\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_7504069\", \"source\": \"certificate\"}], \"total_baggages\": 3.0, \"user_id\": \"mia_li_3668\"})"
+   ],
+   "p_hat": 0.3333333333333333,
+   "modal_disagreement": 0.25,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00448075,
+   "probe_prompt_tokens": 34887,
+   "probe_completion_tokens": 1084,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 16,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "missed_write",
+  "effect": null,
+  "p_hat": null,
+  "turn": null,
+  "tool": null
+ }
+}

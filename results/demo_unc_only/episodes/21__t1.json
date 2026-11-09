@@ -1,0 +1,448 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 2,
+ "mode": "unc_only",
+ "task_id": "21",
+ "trial": 1,
+ "seed": 301,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.02462653,
+ "user_cost": 0.0065301000000000005,
+ "agent_prompt_tokens": 86383,
+ "agent_completion_tokens": 6130,
+ "probe_cost": 0.010051599999999999,
+ "probe_prompt_tokens": 81998,
+ "probe_completion_tokens": 2161,
+ "n_assistant_msgs": 16,
+ "n_probes": 15,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "sofia_kim_7287"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 4,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "OI5L9G"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 5,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "AQLBTL"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 6,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "KA7I60"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 7,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "I57WUD"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 8,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "OBUT9V"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 11,
+   "name": "search_direct_flight",
+   "arguments": {
+    "date": "2024-05-27",
+    "origin": "DEN",
+    "destination": "IAH"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 12,
+   "name": "search_onestop_flight",
+   "arguments": {
+    "date": "2024-05-27",
+    "origin": "DEN",
+    "destination": "IAH"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [
+  "21_0",
+  "21_1"
+ ],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_user_details({\"user_id\": \"sofia_kim_7287\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_user_details({\"user_id\": \"sofia_kim_7287\"})",
+   "candidates": [
+    "get_user_details({\"user_id\": \"sofia_kim_7287\"})",
+    "get_user_details({\"user_id\": \"sofia_kim_7287\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0012106999999999999,
+   "probe_prompt_tokens": 7042,
+   "probe_completion_tokens": 230,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "get_reservation_details({\"reservation_id\": \"oi5l9g\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"oi5l9g\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"oi5l9g\"})",
+    "get_reservation_details({\"reservation_id\": \"oi5l9g\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00104952,
+   "probe_prompt_tokens": 8294,
+   "probe_completion_tokens": 222,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "get_reservation_details({\"reservation_id\": \"aqlbtl\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"aqlbtl\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"aqlbtl\"})",
+    "get_reservation_details({\"reservation_id\": \"aqlbtl\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0009972199999999998,
+   "probe_prompt_tokens": 8988,
+   "probe_completion_tokens": 107,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "get_reservation_details({\"reservation_id\": \"ka7i60\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"ka7i60\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"ka7i60\"})",
+    "get_reservation_details({\"reservation_id\": \"ka7i60\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0008734000000000001,
+   "probe_prompt_tokens": 9806,
+   "probe_completion_tokens": 163,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "get_reservation_details({\"reservation_id\": \"i57wud\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"i57wud\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"i57wud\"})",
+    "get_reservation_details({\"reservation_id\": \"i57wud\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00150862,
+   "probe_prompt_tokens": 10622,
+   "probe_completion_tokens": 325,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "get_reservation_details({\"reservation_id\": \"obut9v\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"obut9v\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"obut9v\"})",
+    "get_reservation_details({\"reservation_id\": \"obut9v\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0010632,
+   "probe_prompt_tokens": 11570,
+   "probe_completion_tokens": 240,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 10,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})",
+   "candidates": [
+    "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})",
+    "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00262124,
+   "probe_prompt_tokens": 12784,
+   "probe_completion_tokens": 740,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 11,
+   "proposal": "search_onestop_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "search_onestop_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})",
+   "candidates": [
+    "search_onestop_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})",
+    "search_onestop_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"den\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0007277,
+   "probe_prompt_tokens": 12892,
+   "probe_completion_tokens": 134,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 12,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 13,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 14,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "missed_write",
+  "effect": null,
+  "p_hat": null,
+  "turn": null,
+  "tool": null
+ }
+}

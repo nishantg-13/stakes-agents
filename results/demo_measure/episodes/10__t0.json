@@ -1,0 +1,513 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "10",
+ "trial": 0,
+ "seed": 300,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.01520727,
+ "user_cost": 0.0025845599999999996,
+ "agent_prompt_tokens": 84565,
+ "agent_completion_tokens": 3252,
+ "probe_cost": 0.01130825,
+ "probe_prompt_tokens": 87414,
+ "probe_completion_tokens": 2483,
+ "n_assistant_msgs": 16,
+ "n_probes": 15,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "liam_khan_2521"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 4,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "4NQLHD"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 5,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "KHIK97"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 6,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "NO6SVK"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 7,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "AJVCTQ"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 8,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "ZB7LBX"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 10,
+   "name": "search_direct_flight",
+   "arguments": {
+    "destination": "LAS",
+    "date": "2024-05-24",
+    "origin": "IAH"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 11,
+   "name": "search_direct_flight",
+   "arguments": {
+    "date": "2024-05-24",
+    "destination": "SEA",
+    "origin": "LAS"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 12,
+   "name": "search_direct_flight",
+   "arguments": {
+    "date": "2024-05-26",
+    "destination": "JFK",
+    "origin": "SEA"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 13,
+   "name": "search_direct_flight",
+   "arguments": {
+    "destination": "IAH",
+    "date": "2024-05-27",
+    "origin": "JFK"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 14,
+   "name": "update_reservation_flights",
+   "arguments": {
+    "payment_id": "credit_card_7434610",
+    "cabin": "business",
+    "reservation_id": "4NQLHD",
+    "flights": [
+     {
+      "flight_number": "HAT190",
+      "price": 464,
+      "destination": "LAS",
+      "date": "2024-05-24",
+      "origin": "IAH"
+     },
+     {
+      "flight_number": "HAT047",
+      "destination": "SEA",
+      "price": 202,
+      "date": "2024-05-24",
+      "origin": "LAS"
+     },
+     {
+      "flight_number": "HAT021",
+      "origin": "SEA",
+      "destination": "JFK",
+      "price": 290,
+      "date": "2024-05-26"
+     },
+     {
+      "destination": "IAH",
+      "origin": "JFK",
+      "date": "2024-05-27",
+      "price": 241,
+      "flight_number": "HAT279"
+     }
+    ]
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": false,
+   "erroneous": true,
+   "matched_gold": null,
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_user_details({\"user_id\": \"liam_khan_2521\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_user_details({\"user_id\": \"liam_khan_2521\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "get_reservation_details({\"reservation_id\": \"4nqlhd\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"4nqlhd\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"4nqlhd\"})",
+    "get_reservation_details({\"reservation_id\": \"4nqlhd\"})",
+    "get_reservation_details({\"reservation_id\": \"4nqlhd\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0008440499999999999,
+   "probe_prompt_tokens": 12213,
+   "probe_completion_tokens": 66,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "get_reservation_details({\"reservation_id\": \"khik97\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"khik97\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"khik97\"})",
+    "get_reservation_details({\"reservation_id\": \"khik97\"})",
+    "get_reservation_details({\"reservation_id\": \"khik97\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00236018,
+   "probe_prompt_tokens": 13620,
+   "probe_completion_tokens": 413,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "get_reservation_details({\"reservation_id\": \"no6svk\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"no6svk\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "get_reservation_details({\"reservation_id\": \"ajvctq\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"ajvctq\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"ajvctq\"})",
+    "get_reservation_details({\"reservation_id\": \"ajvctq\"})",
+    "get_reservation_details({\"reservation_id\": \"ajvctq\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00106569,
+   "probe_prompt_tokens": 15666,
+   "probe_completion_tokens": 63,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "get_reservation_details({\"reservation_id\": \"zb7lbx\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"zb7lbx\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-24\", \"destination\": \"las\", \"origin\": \"iah\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-24\", \"destination\": \"las\", \"origin\": \"iah\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 10,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-24\", \"destination\": \"sea\", \"origin\": \"las\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-24\", \"destination\": \"sea\", \"origin\": \"las\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 11,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-26\", \"destination\": \"jfk\", \"origin\": \"sea\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-26\", \"destination\": \"jfk\", \"origin\": \"sea\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 12,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"jfk\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"jfk\"})",
+   "candidates": [
+    "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"jfk\"})",
+    "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"jfk\"})",
+    "search_direct_flight({\"date\": \"2024-05-27\", \"destination\": \"iah\", \"origin\": \"jfk\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00168054,
+   "probe_prompt_tokens": 22677,
+   "probe_completion_tokens": 114,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 13,
+   "proposal": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-24\", \"destination\": \"las\", \"flight_number\": \"hat190\", \"origin\": \"iah\", \"price\": 464.0}, {\"date\": \"2024-05-24\", \"destination\": \"sea\", \"flight_number\": \"hat047\", \"origin\": \"las\", \"price\": 202.0}, {\"date\": \"2024-05-26\", \"destination\": \"jfk\", \"flight_number\": \"hat021\", \"origin\": \"sea\", \"price\": 290.0}, {\"date\": \"2024-05-27\", \"destination\": \"iah\", \"flight_number\": \"hat279\", \"origin\": \"jfk\", \"price\": 241.0}], \"payment_id\": \"credit_card_7434610\", \"reservation_id\": \"4nqlhd\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-24\", \"destination\": \"las\", \"flight_number\": \"hat190\", \"origin\": \"iah\", \"price\": 464.0}, {\"date\": \"2024-05-24\", \"destination\": \"sea\", \"flight_number\": \"hat047\", \"origin\": \"las\", \"price\": 202.0}, {\"date\": \"2024-05-26\", \"destination\": \"jfk\", \"flight_number\": \"hat021\", \"origin\": \"sea\", \"price\": 290.0}, {\"date\": \"2024-05-27\", \"destination\": \"iah\", \"flight_number\": \"hat279\", \"origin\": \"jfk\", \"price\": 241.0}], \"payment_id\": \"credit_card_7434610\", \"reservation_id\": \"4nqlhd\"})",
+   "candidates": [
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-24\", \"destination\": \"las\", \"flight_number\": \"hat190\", \"origin\": \"iah\", \"price\": 464.0}, {\"date\": \"2024-05-24\", \"destination\": \"sea\", \"flight_number\": \"hat047\", \"origin\": \"las\", \"price\": 202.0}, {\"date\": \"2024-05-26\", \"destination\": \"jfk\", \"flight_number\": \"hat021\", \"origin\": \"sea\", \"price\": 290.0}, {\"date\": \"2024-05-27\", \"destination\": \"iah\", \"flight_number\": \"hat279\", \"origin\": \"jfk\", \"price\": 241.0}], \"payment_id\": \"credit_card_7434610\", \"reservation_id\": \"4nqlhd\"})",
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-24\", \"destination\": \"las\", \"flight_number\": \"hat190\", \"origin\": \"iah\", \"price\": 464.0}, {\"date\": \"2024-05-24\", \"destination\": \"sea\", \"flight_number\": \"hat047\", \"origin\": \"las\", \"price\": 202.0}, {\"date\": \"2024-05-26\", \"destination\": \"jfk\", \"flight_number\": \"hat021\", \"origin\": \"sea\", \"price\": 290.0}, {\"date\": \"2024-05-27\", \"destination\": \"iah\", \"flight_number\": \"hat279\", \"origin\": \"jfk\", \"price\": 241.0}], \"payment_id\": \"credit_card_7434610\", \"reservation_id\": \"4nqlhd\"})",
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-24\", \"destination\": \"las\", \"flight_number\": \"hat190\", \"origin\": \"iah\", \"price\": 464.0}, {\"date\": \"2024-05-24\", \"destination\": \"sea\", \"flight_number\": \"hat047\", \"origin\": \"las\", \"price\": 202.0}, {\"date\": \"2024-05-26\", \"destination\": \"jfk\", \"flight_number\": \"hat021\", \"origin\": \"sea\", \"price\": 290.0}, {\"date\": \"2024-05-27\", \"destination\": \"iah\", \"flight_number\": \"hat279\", \"origin\": \"jfk\", \"price\": 241.0}], \"payment_id\": \"credit_card_7434610\", \"reservation_id\": \"4nqlhd\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.005357790000000001,
+   "probe_prompt_tokens": 23238,
+   "probe_completion_tokens": 1827,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 14,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "wrong_write",
+  "effect": "COMPENSABLE",
+  "p_hat": 0.0,
+  "turn": 14,
+  "tool": "update_reservation_flights"
+ }
+}

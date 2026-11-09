@@ -1,0 +1,477 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "42",
+ "trial": 0,
+ "seed": 300,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.01279409,
+ "user_cost": 0.004177500000000001,
+ "agent_prompt_tokens": 85189,
+ "agent_completion_tokens": 2465,
+ "probe_cost": 0.01051866,
+ "probe_prompt_tokens": 114963,
+ "probe_completion_tokens": 2142,
+ "n_assistant_msgs": 16,
+ "n_probes": 15,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "sophia_martin_4574"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 3,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "MFRB94"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 4,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "PUNERT"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 5,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "HSR97W"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 6,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "SE9KEL"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 7,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "FDZ0T5"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 8,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "HTR26G"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 9,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "5BGGWZ"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 12,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "HSR97W"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "42_9",
+   "p_hat": 0.0
+  },
+  {
+   "turn": 13,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "SE9KEL"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": true,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 14,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "FDZ0T5"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "42_8",
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_user_details({\"user_id\": \"sophia_martin_4574\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_user_details({\"user_id\": \"sophia_martin_4574\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "get_reservation_details({\"reservation_id\": \"mfrb94\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"mfrb94\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "get_reservation_details({\"reservation_id\": \"punert\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"punert\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "get_reservation_details({\"reservation_id\": \"hsr97w\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"hsr97w\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"hsr97w\"})",
+    "get_reservation_details({\"reservation_id\": \"hsr97w\"})",
+    "get_reservation_details({\"reservation_id\": \"hsr97w\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00193264,
+   "probe_prompt_tokens": 14118,
+   "probe_completion_tokens": 487,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "get_reservation_details({\"reservation_id\": \"se9kel\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"se9kel\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "get_reservation_details({\"reservation_id\": \"fdz0t5\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"fdz0t5\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "get_reservation_details({\"reservation_id\": \"htr26g\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"htr26g\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"htr26g\"})",
+    "get_reservation_details({\"reservation_id\": \"htr26g\"})",
+    "get_reservation_details({\"reservation_id\": \"htr26g\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00177611,
+   "probe_prompt_tokens": 17331,
+   "probe_completion_tokens": 299,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "get_reservation_details({\"reservation_id\": \"5bggwz\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"5bggwz\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"5bggwz\"})",
+    "get_reservation_details({\"reservation_id\": \"5bggwz\"})",
+    "get_reservation_details({\"reservation_id\": \"5bggwz\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00126801,
+   "probe_prompt_tokens": 18270,
+   "probe_completion_tokens": 252,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 10,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 11,
+   "proposal": "cancel_reservation({\"reservation_id\": \"hsr97w\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "cancel_reservation({\"reservation_id\": \"hsr97w\"})",
+   "candidates": [
+    "cancel_reservation({\"reservation_id\": \"hsr97w\"})",
+    "cancel_reservation({\"reservation_id\": \"hsr97w\"})",
+    "cancel_reservation({\"reservation_id\": \"hsr97w\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0032353900000000003,
+   "probe_prompt_tokens": 20607,
+   "probe_completion_tokens": 973,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 12,
+   "proposal": "cancel_reservation({\"reservation_id\": \"se9kel\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "cancel_reservation({\"reservation_id\": \"se9kel\"})",
+   "candidates": [
+    "cancel_reservation({\"reservation_id\": \"se9kel\"})",
+    "cancel_reservation({\"reservation_id\": \"se9kel\"})",
+    "cancel_reservation({\"reservation_id\": \"se9kel\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00134108,
+   "probe_prompt_tokens": 21621,
+   "probe_completion_tokens": 68,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 13,
+   "proposal": "cancel_reservation({\"reservation_id\": \"fdz0t5\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "cancel_reservation({\"reservation_id\": \"fdz0t5\"})",
+   "candidates": [
+    "cancel_reservation({\"reservation_id\": \"fdz0t5\"})",
+    "cancel_reservation({\"reservation_id\": \"fdz0t5\"})",
+    "cancel_reservation({\"reservation_id\": \"fdz0t5\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0009654299999999999,
+   "probe_prompt_tokens": 23016,
+   "probe_completion_tokens": 63,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 14,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "wrong_write",
+  "effect": "IRREVERSIBLE",
+  "p_hat": 0.0,
+  "turn": 13,
+  "tool": "cancel_reservation"
+ }
+}

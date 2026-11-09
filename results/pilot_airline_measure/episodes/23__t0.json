@@ -1,0 +1,777 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "23",
+ "trial": 0,
+ "seed": 300,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.04729722,
+ "user_cost": 0.019721330000000002,
+ "agent_prompt_tokens": 199634,
+ "agent_completion_tokens": 12564,
+ "probe_cost": 0.02163719,
+ "probe_prompt_tokens": 166917,
+ "probe_completion_tokens": 6011,
+ "n_assistant_msgs": 24,
+ "n_probes": 23,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 2,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "mohamed_silva_9265"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 6,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "K1NW8N"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 7,
+   "name": "search_direct_flight",
+   "arguments": {
+    "destination": "SFO",
+    "origin": "JFK",
+    "date": "2024-05-26"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 8,
+   "name": "search_onestop_flight",
+   "arguments": {
+    "date": "2024-05-26",
+    "origin": "JFK",
+    "destination": "SFO"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 9,
+   "name": "search_direct_flight",
+   "arguments": {
+    "origin": "SFO",
+    "destination": "JFK",
+    "date": "2024-05-28"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 10,
+   "name": "search_onestop_flight",
+   "arguments": {
+    "destination": "JFK",
+    "origin": "SFO",
+    "date": "2024-05-28"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 14,
+   "name": "cancel_reservation",
+   "arguments": {
+    "reservation_id": "K1NW8N"
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "23_0",
+   "p_hat": 0.0
+  },
+  {
+   "turn": 18,
+   "name": "book_reservation",
+   "arguments": {
+    "insurance": "no",
+    "passengers": [
+     {
+      "last_name": "Silva",
+      "first_name": "Mohamed",
+      "dob": "1960-11-26"
+     },
+     {
+      "first_name": "Raj",
+      "last_name": "Sanchez",
+      "dob": "1986-09-12"
+     },
+     {
+      "dob": "1980-03-27",
+      "last_name": "Wilson",
+      "first_name": "Liam"
+     }
+    ],
+    "nonfree_baggages": 0,
+    "destination": "SFO",
+    "total_baggages": 0,
+    "user_id": "mohamed_silva_9265",
+    "origin": "JFK",
+    "payment_methods": [
+     {
+      "id": "certificate_2765295",
+      "source": "certificate",
+      "amount": 250
+     },
+     {
+      "id": "certificate_3765853",
+      "source": "certificate",
+      "amount": 500
+     },
+     {
+      "source": "certificate",
+      "amount": 250,
+      "id": "certificate_9984806"
+     },
+     {
+      "id": "gift_card_6136092",
+      "source": "gift_card",
+      "amount": 696
+     },
+     {
+      "id": "gift_card_8020792",
+      "source": "gift_card",
+      "amount": 198
+     },
+     {
+      "id": "credit_card_2198526",
+      "source": "credit_card",
+      "amount": 719
+     }
+    ],
+    "flights": [
+     {
+      "destination": "SFO",
+      "date": "2024-05-26",
+      "origin": "JFK",
+      "flight_number": "HAT023"
+     },
+     {
+      "date": "2024-05-28",
+      "flight_number": "HAT204",
+      "destination": "SEA",
+      "origin": "SFO"
+     },
+     {
+      "destination": "JFK",
+      "date": "2024-05-28",
+      "origin": "SEA",
+      "flight_number": "HAT100"
+     }
+    ],
+    "flight_type": "round_trip",
+    "cabin": "business"
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": true,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.6666666666666666
+  },
+  {
+   "turn": 19,
+   "name": "book_reservation",
+   "arguments": {
+    "origin": "JFK",
+    "passengers": [
+     {
+      "dob": "1960-11-26",
+      "first_name": "Mohamed",
+      "last_name": "Silva"
+     },
+     {
+      "first_name": "Raj",
+      "last_name": "Sanchez",
+      "dob": "1986-09-12"
+     },
+     {
+      "first_name": "Liam",
+      "last_name": "Wilson",
+      "dob": "1980-03-27"
+     }
+    ],
+    "flights": [
+     {
+      "destination": "SFO",
+      "flight_number": "HAT023",
+      "origin": "JFK",
+      "date": "2024-05-26"
+     },
+     {
+      "origin": "SFO",
+      "destination": "SEA",
+      "date": "2024-05-28",
+      "flight_number": "HAT204"
+     },
+     {
+      "destination": "JFK",
+      "date": "2024-05-28",
+      "flight_number": "HAT100",
+      "origin": "SEA"
+     }
+    ],
+    "total_baggages": 0,
+    "insurance": "no",
+    "payment_methods": [
+     {
+      "payment_id": "certificate_2765295",
+      "source": "certificate",
+      "amount": 250
+     },
+     {
+      "payment_id": "certificate_3765853",
+      "source": "certificate",
+      "amount": 500
+     },
+     {
+      "payment_id": "certificate_9984806",
+      "source": "certificate",
+      "amount": 250
+     },
+     {
+      "source": "gift_card",
+      "amount": 696,
+      "payment_id": "gift_card_6136092"
+     },
+     {
+      "payment_id": "gift_card_8020792",
+      "source": "gift_card",
+      "amount": 198
+     },
+     {
+      "payment_id": "credit_card_2198526",
+      "source": "credit_card",
+      "amount": 719
+     }
+    ],
+    "user_id": "mohamed_silva_9265",
+    "cabin": "business",
+    "flight_type": "round_trip",
+    "destination": "SFO",
+    "nonfree_baggages": 0
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": true,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.3333333333333333
+  },
+  {
+   "turn": 22,
+   "name": "transfer_to_human_agents",
+   "arguments": {
+    "summary": "User wants to book new business class flights after cancelling a previous reservation. The refund for the cancelled reservation is pending, and the user wants to wait for the refund to minimize Mastercard charge, but is concerned about losing current flight availability and prices. User asked if flights can be held, which is not possible with current tools."
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 1.0
+  }
+ ],
+ "unmatched_gold_writes": [
+  "23_1",
+  "23_2",
+  "23_3"
+ ],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "get_user_details({\"user_id\": \"mohamed_silva_9265\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_user_details({\"user_id\": \"mohamed_silva_9265\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "get_reservation_details({\"reservation_id\": \"k1nw8n\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"k1nw8n\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"origin\": \"jfk\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"origin\": \"jfk\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "search_onestop_flight({\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"origin\": \"jfk\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_onestop_flight({\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"origin\": \"jfk\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"origin\": \"sfo\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"origin\": \"sfo\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "search_onestop_flight({\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"origin\": \"sfo\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "search_onestop_flight({\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"origin\": \"sfo\"})",
+   "candidates": [
+    "search_onestop_flight({\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"origin\": \"sfo\"})",
+    "search_onestop_flight({\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"origin\": \"sfo\"})",
+    "search_onestop_flight({\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"origin\": \"sfo\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0013409399999999999,
+   "probe_prompt_tokens": 21225,
+   "probe_completion_tokens": 120,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 10,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 11,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 12,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 13,
+   "proposal": "cancel_reservation({\"reservation_id\": \"k1nw8n\"})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "cancel_reservation({\"reservation_id\": \"k1nw8n\"})",
+   "candidates": [
+    "cancel_reservation({\"reservation_id\": \"k1nw8n\"})",
+    "cancel_reservation({\"reservation_id\": \"k1nw8n\"})",
+    "cancel_reservation({\"reservation_id\": \"k1nw8n\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0018071899999999998,
+   "probe_prompt_tokens": 31104,
+   "probe_completion_tokens": 140,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 14,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 15,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 16,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 17,
+   "proposal": "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})",
+   "candidates": [
+    "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"id\": \"certificate_2765295\"}, {\"amount\": 500.0, \"id\": \"certificate_3765853\"}, {\"amount\": 250.0, \"id\": \"certificate_9984806\"}, {\"amount\": 696.0, \"id\": \"gift_card_6136092\"}, {\"amount\": 198.0, \"id\": \"gift_card_8020792\"}, {\"amount\": 719.0, \"id\": \"credit_card_2198526\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})",
+    "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\", \"price\": 364.0}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\", \"price\": 248.0}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\", \"price\": 259.0}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})",
+    "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})"
+   ],
+   "p_hat": 0.6666666666666666,
+   "modal_disagreement": 0.5,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0080151,
+   "probe_prompt_tokens": 35859,
+   "probe_completion_tokens": 2697,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 18,
+   "proposal": "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"payment_id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"payment_id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"payment_id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"payment_id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"payment_id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"payment_id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"payment_id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"payment_id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"payment_id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"payment_id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"payment_id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"payment_id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})",
+   "candidates": [
+    "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"payment_id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"payment_id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"payment_id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"payment_id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"payment_id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"payment_id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})",
+    "<text>",
+    "book_reservation({\"cabin\": \"business\", \"destination\": \"sfo\", \"flight_type\": \"round_trip\", \"flights\": [{\"date\": \"2024-05-26\", \"destination\": \"sfo\", \"flight_number\": \"hat023\", \"origin\": \"jfk\"}, {\"date\": \"2024-05-28\", \"destination\": \"sea\", \"flight_number\": \"hat204\", \"origin\": \"sfo\"}, {\"date\": \"2024-05-28\", \"destination\": \"jfk\", \"flight_number\": \"hat100\", \"origin\": \"sea\"}], \"insurance\": \"no\", \"nonfree_baggages\": 0.0, \"origin\": \"jfk\", \"passengers\": [{\"dob\": \"1960-11-26\", \"first_name\": \"mohamed\", \"last_name\": \"silva\"}, {\"dob\": \"1986-09-12\", \"first_name\": \"raj\", \"last_name\": \"sanchez\"}, {\"dob\": \"1980-03-27\", \"first_name\": \"liam\", \"last_name\": \"wilson\"}], \"payment_methods\": [{\"amount\": 250.0, \"payment_id\": \"certificate_2765295\", \"source\": \"certificate\"}, {\"amount\": 500.0, \"payment_id\": \"certificate_3765853\", \"source\": \"certificate\"}, {\"amount\": 250.0, \"payment_id\": \"certificate_9984806\", \"source\": \"certificate\"}, {\"amount\": 696.0, \"payment_id\": \"gift_card_6136092\", \"source\": \"gift_card\"}, {\"amount\": 198.0, \"payment_id\": \"gift_card_8020792\", \"source\": \"gift_card\"}, {\"amount\": 719.0, \"payment_id\": \"credit_card_2198526\", \"source\": \"credit_card\"}], \"total_baggages\": 0.0, \"user_id\": \"mohamed_silva_9265\"})"
+   ],
+   "p_hat": 0.3333333333333333,
+   "modal_disagreement": 0.25,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.007193830000000001,
+   "probe_prompt_tokens": 37578,
+   "probe_completion_tokens": 2239,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 19,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 20,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 21,
+   "proposal": "transfer_to_human_agents({})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "transfer_to_human_agents({})",
+   "candidates": [
+    "<text>",
+    "<text>",
+    "<text>"
+   ],
+   "p_hat": 1.0,
+   "modal_disagreement": 0.25,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00328013,
+   "probe_prompt_tokens": 41151,
+   "probe_completion_tokens": 815,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 22,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "missed_write",
+  "effect": null,
+  "p_hat": null,
+  "turn": null,
+  "tool": null
+ }
+}

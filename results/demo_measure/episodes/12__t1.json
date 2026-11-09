@@ -1,0 +1,333 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 3,
+ "mode": "measure",
+ "task_id": "12",
+ "trial": 1,
+ "seed": 301,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.010462560000000001,
+ "user_cost": 0.0023519,
+ "agent_prompt_tokens": 48416,
+ "agent_completion_tokens": 2475,
+ "probe_cost": 0.00688199,
+ "probe_prompt_tokens": 47142,
+ "probe_completion_tokens": 1685,
+ "n_assistant_msgs": 11,
+ "n_probes": 10,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 1,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "YAX4DR"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 2,
+   "name": "search_direct_flight",
+   "arguments": {
+    "origin": "BOS",
+    "destination": "MCO",
+    "date": "2024-05-18"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 3,
+   "name": "search_direct_flight",
+   "arguments": {
+    "date": "2024-05-19",
+    "origin": "MCO",
+    "destination": "MSP"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": null
+  },
+  {
+   "turn": 5,
+   "name": "update_reservation_flights",
+   "arguments": {
+    "flights": [
+     {
+      "flight_number": "HAT235",
+      "date": "2024-05-18",
+      "origin": "BOS",
+      "destination": "MCO"
+     },
+     {
+      "flight_number": "HAT298",
+      "date": "2024-05-19",
+      "origin": "MCO",
+      "destination": "MSP"
+     }
+    ],
+    "payment_id": "credit_card_4938634",
+    "cabin": "business",
+    "reservation_id": "YAX4DR"
+   },
+   "effect": "COMPENSABLE",
+   "tool_error": false,
+   "erroneous": true,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 8,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "chen_lee_6825"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.6666666666666666
+  },
+  {
+   "turn": 9,
+   "name": "update_reservation_baggages",
+   "arguments": {
+    "total_baggages": 2,
+    "payment_id": "credit_card_4938634",
+    "reservation_id": "YAX4DR",
+    "nonfree_baggages": 0
+   },
+   "effect": "IRREVERSIBLE",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": "12_4",
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "get_reservation_details({\"reservation_id\": \"yax4dr\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "get_reservation_details({\"reservation_id\": \"yax4dr\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-18\", \"destination\": \"mco\", \"origin\": \"bos\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-18\", \"destination\": \"mco\", \"origin\": \"bos\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"msp\", \"origin\": \"mco\"})",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"msp\", \"origin\": \"mco\"})",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\"}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\"}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+   "effect": "COMPENSABLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\"}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\"}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+   "candidates": [
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\"}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\"}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\"}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\"}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})",
+    "update_reservation_flights({\"cabin\": \"business\", \"flights\": [{\"date\": \"2024-05-18\", \"destination\": \"mco\", \"flight_number\": \"hat235\", \"origin\": \"bos\"}, {\"date\": \"2024-05-19\", \"destination\": \"msp\", \"flight_number\": \"hat298\", \"origin\": \"mco\"}], \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0028206,
+   "probe_prompt_tokens": 14067,
+   "probe_completion_tokens": 747,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "get_user_details({\"user_id\": \"chen_lee_6825\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "measure",
+   "executed": "get_user_details({\"user_id\": \"chen_lee_6825\"})",
+   "candidates": [
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+    "get_user_details({\"user_id\": \"chen_lee_6825\"})",
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})"
+   ],
+   "p_hat": 0.6666666666666666,
+   "modal_disagreement": 0.5,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0029112800000000005,
+   "probe_prompt_tokens": 15954,
+   "probe_completion_tokens": 767,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+   "effect": "IRREVERSIBLE",
+   "probed": true,
+   "mode": "measure",
+   "executed": "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+   "candidates": [
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})",
+    "update_reservation_baggages({\"nonfree_baggages\": 0.0, \"payment_id\": \"credit_card_4938634\", \"reservation_id\": \"yax4dr\", \"total_baggages\": 2.0})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0011501099999999998,
+   "probe_prompt_tokens": 17121,
+   "probe_completion_tokens": 171,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 9,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "measure",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "wrong_write",
+  "effect": "COMPENSABLE",
+  "p_hat": 0.0,
+  "turn": 5,
+  "tool": "update_reservation_flights"
+ }
+}

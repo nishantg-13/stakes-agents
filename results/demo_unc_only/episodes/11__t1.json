@@ -1,0 +1,273 @@
+{
+ "domain": "airline",
+ "split": "train",
+ "agent_llm": "gemini/gemini-2.5-flash",
+ "user_llm": "gemini/gemini-2.5-flash",
+ "k0": 2,
+ "mode": "unc_only",
+ "task_id": "11",
+ "trial": 1,
+ "seed": 301,
+ "reward": 0.0,
+ "success": false,
+ "termination_reason": "TerminationReason.USER_STOP",
+ "agent_cost": 0.00534514,
+ "user_cost": 0.0046042,
+ "agent_prompt_tokens": 37457,
+ "agent_completion_tokens": 1018,
+ "probe_cost": 0.00290068,
+ "probe_prompt_tokens": 34256,
+ "probe_completion_tokens": 436,
+ "n_assistant_msgs": 10,
+ "n_probes": 9,
+ "probe_join_mismatches": 0,
+ "ledger": [
+  {
+   "turn": 3,
+   "name": "get_user_details",
+   "arguments": {
+    "user_id": "james_patel_9828"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 6,
+   "name": "get_reservation_details",
+   "arguments": {
+    "reservation_id": "GV1N64"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 7,
+   "name": "search_direct_flight",
+   "arguments": {
+    "date": "2024-05-19",
+    "origin": "LAS",
+    "destination": "DEN"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  },
+  {
+   "turn": 8,
+   "name": "search_direct_flight",
+   "arguments": {
+    "destination": "LAS",
+    "origin": "DEN",
+    "date": "2024-05-20"
+   },
+   "effect": "READ",
+   "tool_error": false,
+   "erroneous": false,
+   "matched_gold": null,
+   "p_hat": 0.0
+  }
+ ],
+ "unmatched_gold_writes": [
+  "11_0"
+ ],
+ "probes": [
+  {
+   "agent_turn": 0,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 1,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 2,
+   "proposal": "get_user_details({\"user_id\": \"james_patel_9828\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_user_details({\"user_id\": \"james_patel_9828\"})",
+   "candidates": [
+    "get_user_details({\"user_id\": \"james_patel_9828\"})",
+    "get_user_details({\"user_id\": \"james_patel_9828\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0008445600000000001,
+   "probe_prompt_tokens": 7346,
+   "probe_completion_tokens": 246,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 3,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 4,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 5,
+   "proposal": "get_reservation_details({\"reservation_id\": \"gv1n64\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "get_reservation_details({\"reservation_id\": \"gv1n64\"})",
+   "candidates": [
+    "get_reservation_details({\"reservation_id\": \"gv1n64\"})",
+    "get_reservation_details({\"reservation_id\": \"gv1n64\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00060748,
+   "probe_prompt_tokens": 8262,
+   "probe_completion_tokens": 46,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 6,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})",
+   "candidates": [
+    "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})",
+    "search_direct_flight({\"date\": \"2024-05-19\", \"destination\": \"den\", \"origin\": \"las\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0008856000000000001,
+   "probe_prompt_tokens": 9012,
+   "probe_completion_tokens": 72,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 7,
+   "proposal": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})",
+   "effect": "READ",
+   "probed": true,
+   "mode": "unc_only",
+   "executed": "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})",
+   "candidates": [
+    "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})",
+    "search_direct_flight({\"date\": \"2024-05-20\", \"destination\": \"las\", \"origin\": \"den\"})"
+   ],
+   "p_hat": 0.0,
+   "modal_disagreement": 0.0,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.00056304,
+   "probe_prompt_tokens": 9636,
+   "probe_completion_tokens": 72,
+   "probe_errors": 0
+  },
+  {
+   "agent_turn": 8,
+   "proposal": "<text>",
+   "effect": "READ",
+   "probed": false,
+   "mode": "unc_only",
+   "executed": "<text>",
+   "candidates": [],
+   "p_hat": null,
+   "modal_disagreement": null,
+   "switched_by_vote": false,
+   "verified": false,
+   "verdict": null,
+   "revised": false,
+   "probe_cost": 0.0,
+   "probe_prompt_tokens": 0,
+   "probe_completion_tokens": 0,
+   "probe_errors": 0
+  }
+ ],
+ "decisive_error": {
+  "kind": "missed_write",
+  "effect": null,
+  "p_hat": null,
+  "turn": null,
+  "tool": null
+ }
+}
